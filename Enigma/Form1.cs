@@ -14,25 +14,25 @@ namespace Enigma
     {
         public Form1()
         {
-            DropDown.Items.AddRange()
             InitializeComponent();
+            DropDown.SelectedIndex = 0;
         }
 
-        private void textBox2_TextChanged(object sender, EventArgs e)
+        private void Ausgabe_TextChanged(object sender, EventArgs e)
         {
 
         }
 
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        private void DropDown_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            //DropDown.Items.Remove("Select encryption...");
         }
 
         private void Cancel_Click(object sender, EventArgs e)
         {
             Eingabe.Text = "";
             Ausgabe.Text = "";
-            DropDown.SelectedIndex = -1;
+            DropDown.SelectedIndex = 0;
         }
     }
 }

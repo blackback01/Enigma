@@ -54,7 +54,7 @@
             this.DropDown.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.DropDown.FormattingEnabled = true;
             this.DropDown.Items.AddRange(new object[] {
-            "",
+            "Select encryption...",
             "Caesar",
             "Rot13",
             "Vigenère"});
@@ -64,7 +64,7 @@
             this.DropDown.Size = new System.Drawing.Size(285, 24);
             this.DropDown.TabIndex = 1;
             this.DropDown.Tag = "";
-            this.DropDown.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            this.DropDown.SelectedIndexChanged += new System.EventHandler(this.DropDown_SelectedIndexChanged);
             // 
             // Ausgabe
             // 
@@ -74,7 +74,7 @@
             this.Ausgabe.ReadOnly = true;
             this.Ausgabe.Size = new System.Drawing.Size(254, 375);
             this.Ausgabe.TabIndex = 2;
-            this.Ausgabe.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
+            this.Ausgabe.TextChanged += new System.EventHandler(this.Ausgabe_TextChanged);
             // 
             // Start
             // 
@@ -103,7 +103,7 @@
             this.EingabeLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.EingabeLabel.Location = new System.Drawing.Point(12, 3);
             this.EingabeLabel.Name = "EingabeLabel";
-            this.EingabeLabel.Size = new System.Drawing.Size(143, 39);
+            this.EingabeLabel.Size = new System.Drawing.Size(136, 38);
             this.EingabeLabel.TabIndex = 5;
             this.EingabeLabel.Text = "Eingabe";
             // 
@@ -113,7 +113,7 @@
             this.AusgabeLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.AusgabeLabel.Location = new System.Drawing.Point(406, 3);
             this.AusgabeLabel.Name = "AusgabeLabel";
-            this.AusgabeLabel.Size = new System.Drawing.Size(152, 39);
+            this.AusgabeLabel.Size = new System.Drawing.Size(146, 38);
             this.AusgabeLabel.TabIndex = 6;
             this.AusgabeLabel.Text = "Ausgabe";
             // 
