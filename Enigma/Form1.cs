@@ -14,6 +14,7 @@ namespace Enigma
     {
         public Form1()
         {
+            DropDown.Items.AddRange()
             InitializeComponent();
         }
 
@@ -25,6 +26,13 @@ namespace Enigma
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void Cancel_Click(object sender, EventArgs e)
+        {
+            Eingabe.Text = "";
+            Ausgabe.Text = "";
+            DropDown.SelectedIndex = -1;
         }
     }
 }

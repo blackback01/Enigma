@@ -28,48 +28,53 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.Eingabe = new System.Windows.Forms.TextBox();
+            this.DropDown = new System.Windows.Forms.ComboBox();
+            this.Ausgabe = new System.Windows.Forms.TextBox();
             this.Start = new System.Windows.Forms.Button();
             this.Cancel = new System.Windows.Forms.Button();
             this.EingabeLabel = new System.Windows.Forms.Label();
             this.AusgabeLabel = new System.Windows.Forms.Label();
-            this.button3 = new System.Windows.Forms.Button();
+            this.SaveToTextFile = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // textBox1
+            // Eingabe
             // 
-            this.textBox1.Location = new System.Drawing.Point(13, 45);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(285, 345);
-            this.textBox1.TabIndex = 0;
+            this.Eingabe.Location = new System.Drawing.Point(13, 45);
+            this.Eingabe.Multiline = true;
+            this.Eingabe.Name = "Eingabe";
+            this.Eingabe.Size = new System.Drawing.Size(285, 345);
+            this.Eingabe.TabIndex = 0;
             // 
-            // comboBox1
+            // DropDown
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
+            this.DropDown.AccessibleDescription = "";
+            this.DropDown.AccessibleName = "";
+            this.DropDown.Cursor = System.Windows.Forms.Cursors.Default;
+            this.DropDown.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.DropDown.FormattingEnabled = true;
+            this.DropDown.Items.AddRange(new object[] {
+            "",
             "Caesar",
             "Rot13",
             "Vigenère"});
-            this.comboBox1.Location = new System.Drawing.Point(13, 396);
-            this.comboBox1.MaxDropDownItems = 3;
-            this.comboBox1.MaxLength = 3;
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(285, 24);
-            this.comboBox1.TabIndex = 1;
-            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            this.DropDown.Location = new System.Drawing.Point(13, 396);
+            this.DropDown.MaxDropDownItems = 3;
+            this.DropDown.Name = "DropDown";
+            this.DropDown.Size = new System.Drawing.Size(285, 24);
+            this.DropDown.TabIndex = 1;
+            this.DropDown.Tag = "";
+            this.DropDown.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
-            // textBox2
+            // Ausgabe
             // 
-            this.textBox2.Location = new System.Drawing.Point(304, 45);
-            this.textBox2.Multiline = true;
-            this.textBox2.Name = "textBox2";
-            this.textBox2.ReadOnly = true;
-            this.textBox2.Size = new System.Drawing.Size(254, 375);
-            this.textBox2.TabIndex = 2;
-            this.textBox2.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
+            this.Ausgabe.Location = new System.Drawing.Point(304, 45);
+            this.Ausgabe.Multiline = true;
+            this.Ausgabe.Name = "Ausgabe";
+            this.Ausgabe.ReadOnly = true;
+            this.Ausgabe.Size = new System.Drawing.Size(254, 375);
+            this.Ausgabe.TabIndex = 2;
+            this.Ausgabe.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
             // 
             // Start
             // 
@@ -90,6 +95,7 @@
             this.Cancel.TabIndex = 4;
             this.Cancel.Text = "Cancel";
             this.Cancel.UseVisualStyleBackColor = true;
+            this.Cancel.Click += new System.EventHandler(this.Cancel_Click);
             // 
             // EingabeLabel
             // 
@@ -111,29 +117,29 @@
             this.AusgabeLabel.TabIndex = 6;
             this.AusgabeLabel.Text = "Ausgabe";
             // 
-            // button3
+            // SaveToTextFile
             // 
-            this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.Location = new System.Drawing.Point(305, 427);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(253, 47);
-            this.button3.TabIndex = 7;
-            this.button3.Text = "Save to TextFile";
-            this.button3.UseVisualStyleBackColor = true;
+            this.SaveToTextFile.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SaveToTextFile.Location = new System.Drawing.Point(305, 427);
+            this.SaveToTextFile.Name = "SaveToTextFile";
+            this.SaveToTextFile.Size = new System.Drawing.Size(253, 47);
+            this.SaveToTextFile.TabIndex = 7;
+            this.SaveToTextFile.Text = "Save to TextFile";
+            this.SaveToTextFile.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(563, 486);
-            this.Controls.Add(this.button3);
+            this.Controls.Add(this.SaveToTextFile);
             this.Controls.Add(this.AusgabeLabel);
             this.Controls.Add(this.EingabeLabel);
             this.Controls.Add(this.Cancel);
             this.Controls.Add(this.Start);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.comboBox1);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.Ausgabe);
+            this.Controls.Add(this.DropDown);
+            this.Controls.Add(this.Eingabe);
             this.Name = "Form1";
             this.Text = "Form1";
             this.ResumeLayout(false);
@@ -143,14 +149,14 @@
 
         #endregion
 
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox Eingabe;
+        private System.Windows.Forms.ComboBox DropDown;
+        private System.Windows.Forms.TextBox Ausgabe;
         private System.Windows.Forms.Button Start;
         private System.Windows.Forms.Button Cancel;
         private System.Windows.Forms.Label EingabeLabel;
         private System.Windows.Forms.Label AusgabeLabel;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button SaveToTextFile;
     }
 }
 
