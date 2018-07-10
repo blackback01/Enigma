@@ -28,9 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.Eingabe = new System.Windows.Forms.TextBox();
+            this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
+            this.Input = new System.Windows.Forms.TextBox();
             this.DropDown = new System.Windows.Forms.ComboBox();
-            this.Ausgabe = new System.Windows.Forms.TextBox();
+            this.Output = new System.Windows.Forms.TextBox();
             this.Start = new System.Windows.Forms.Button();
             this.Cancel = new System.Windows.Forms.Button();
             this.EingabeLabel = new System.Windows.Forms.Label();
@@ -39,15 +41,17 @@
             this.Encrypt = new System.Windows.Forms.CheckBox();
             this.Decrypt = new System.Windows.Forms.CheckBox();
             this.CopyToClipboard = new System.Windows.Forms.Button();
+            this.CustomParameter = new System.Windows.Forms.TextBox();
+            this.TTCP = new System.Windows.Forms.ToolTip(this.components);
             this.SuspendLayout();
             // 
-            // Eingabe
+            // Input
             // 
-            this.Eingabe.Location = new System.Drawing.Point(13, 45);
-            this.Eingabe.Multiline = true;
-            this.Eingabe.Name = "Eingabe";
-            this.Eingabe.Size = new System.Drawing.Size(272, 345);
-            this.Eingabe.TabIndex = 0;
+            this.Input.Location = new System.Drawing.Point(13, 45);
+            this.Input.Multiline = true;
+            this.Input.Name = "Input";
+            this.Input.Size = new System.Drawing.Size(272, 345);
+            this.Input.TabIndex = 0;
             // 
             // DropDown
             // 
@@ -70,20 +74,20 @@
             this.DropDown.Tag = "";
             this.DropDown.SelectedIndexChanged += new System.EventHandler(this.DropDown_SelectedIndexChanged);
             // 
-            // Ausgabe
+            // Output
             // 
-            this.Ausgabe.Location = new System.Drawing.Point(291, 45);
-            this.Ausgabe.Multiline = true;
-            this.Ausgabe.Name = "Ausgabe";
-            this.Ausgabe.ReadOnly = true;
-            this.Ausgabe.Size = new System.Drawing.Size(267, 345);
-            this.Ausgabe.TabIndex = 2;
-            this.Ausgabe.TextChanged += new System.EventHandler(this.Ausgabe_TextChanged);
+            this.Output.Location = new System.Drawing.Point(291, 45);
+            this.Output.Multiline = true;
+            this.Output.Name = "Output";
+            this.Output.ReadOnly = true;
+            this.Output.Size = new System.Drawing.Size(267, 345);
+            this.Output.TabIndex = 2;
+            this.Output.TextChanged += new System.EventHandler(this.Output_TextChanged);
             // 
             // Start
             // 
             this.Start.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Start.Location = new System.Drawing.Point(13, 426);
+            this.Start.Location = new System.Drawing.Point(12, 465);
             this.Start.Name = "Start";
             this.Start.Size = new System.Drawing.Size(130, 48);
             this.Start.TabIndex = 3;
@@ -94,7 +98,7 @@
             // Cancel
             // 
             this.Cancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Cancel.Location = new System.Drawing.Point(155, 426);
+            this.Cancel.Location = new System.Drawing.Point(155, 465);
             this.Cancel.Name = "Cancel";
             this.Cancel.Size = new System.Drawing.Size(130, 48);
             this.Cancel.TabIndex = 4;
@@ -108,26 +112,26 @@
             this.EingabeLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.EingabeLabel.Location = new System.Drawing.Point(12, 3);
             this.EingabeLabel.Name = "EingabeLabel";
-            this.EingabeLabel.Size = new System.Drawing.Size(136, 38);
+            this.EingabeLabel.Size = new System.Drawing.Size(88, 38);
             this.EingabeLabel.TabIndex = 5;
-            this.EingabeLabel.Text = "Eingabe";
+            this.EingabeLabel.Text = "Input";
             // 
             // AusgabeLabel
             // 
             this.AusgabeLabel.AutoSize = true;
             this.AusgabeLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.AusgabeLabel.Location = new System.Drawing.Point(406, 3);
+            this.AusgabeLabel.Location = new System.Drawing.Point(443, 4);
             this.AusgabeLabel.Name = "AusgabeLabel";
-            this.AusgabeLabel.Size = new System.Drawing.Size(146, 38);
+            this.AusgabeLabel.Size = new System.Drawing.Size(115, 38);
             this.AusgabeLabel.TabIndex = 6;
-            this.AusgabeLabel.Text = "Ausgabe";
+            this.AusgabeLabel.Text = "Output";
             // 
             // SaveToTextFile
             // 
             this.SaveToTextFile.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.SaveToTextFile.Location = new System.Drawing.Point(291, 427);
+            this.SaveToTextFile.Location = new System.Drawing.Point(291, 426);
             this.SaveToTextFile.Name = "SaveToTextFile";
-            this.SaveToTextFile.Size = new System.Drawing.Size(267, 47);
+            this.SaveToTextFile.Size = new System.Drawing.Size(267, 34);
             this.SaveToTextFile.TabIndex = 7;
             this.SaveToTextFile.Text = "Save to TextFile";
             this.SaveToTextFile.UseVisualStyleBackColor = true;
@@ -159,18 +163,36 @@
             // CopyToClipboard
             // 
             this.CopyToClipboard.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CopyToClipboard.Location = new System.Drawing.Point(291, 480);
+            this.CopyToClipboard.Location = new System.Drawing.Point(291, 466);
             this.CopyToClipboard.Name = "CopyToClipboard";
             this.CopyToClipboard.Size = new System.Drawing.Size(267, 47);
             this.CopyToClipboard.TabIndex = 10;
             this.CopyToClipboard.Text = "Copy to Clipboard";
             this.CopyToClipboard.UseVisualStyleBackColor = true;
+            this.CopyToClipboard.Click += new System.EventHandler(this.CopyToClipboard_Click);
+            // 
+            // CustomParameter
+            // 
+            this.CustomParameter.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CustomParameter.Location = new System.Drawing.Point(12, 426);
+            this.CustomParameter.Name = "CustomParameter";
+            this.CustomParameter.ReadOnly = true;
+            this.CustomParameter.Size = new System.Drawing.Size(273, 34);
+            this.CustomParameter.TabIndex = 12;
+            this.TTCP.SetToolTip(this.CustomParameter, " ");
+            this.CustomParameter.TextChanged += new System.EventHandler(this.CustomParameter_TextChanged);
+            // 
+            // TTCP
+            // 
+            this.TTCP.ToolTipTitle = "Custom parameter";
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(563, 531);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
+            this.AutoSize = true;
+            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.ClientSize = new System.Drawing.Size(567, 517);
+            this.Controls.Add(this.CustomParameter);
             this.Controls.Add(this.CopyToClipboard);
             this.Controls.Add(this.Decrypt);
             this.Controls.Add(this.Encrypt);
@@ -179,11 +201,15 @@
             this.Controls.Add(this.EingabeLabel);
             this.Controls.Add(this.Cancel);
             this.Controls.Add(this.Start);
-            this.Controls.Add(this.Ausgabe);
+            this.Controls.Add(this.Output);
             this.Controls.Add(this.DropDown);
-            this.Controls.Add(this.Eingabe);
+            this.Controls.Add(this.Input);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "Form1";
             this.Text = "Form1";
+            this.TransparencyKey = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -191,9 +217,9 @@
 
         #endregion
 
-        private System.Windows.Forms.TextBox Eingabe;
+        private System.Windows.Forms.TextBox Input;
         private System.Windows.Forms.ComboBox DropDown;
-        private System.Windows.Forms.TextBox Ausgabe;
+        private System.Windows.Forms.TextBox Output;
         private System.Windows.Forms.Button Start;
         private System.Windows.Forms.Button Cancel;
         private System.Windows.Forms.Label EingabeLabel;
@@ -202,6 +228,8 @@
         private System.Windows.Forms.CheckBox Encrypt;
         private System.Windows.Forms.CheckBox Decrypt;
         private System.Windows.Forms.Button CopyToClipboard;
+        private System.Windows.Forms.TextBox CustomParameter;
+        private System.Windows.Forms.ToolTip TTCP;
     }
 }
 

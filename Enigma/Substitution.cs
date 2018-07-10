@@ -19,7 +19,11 @@ namespace Enigma
             {
                 if (alphabet.Contains(c.ToString()))
                 {
-                    int i = alphabet.IndexOf(c, counter) + iKey;
+                    int i = alphabet.IndexOf(c) + iKey;
+                    if (i > 26)
+                    {
+                        i -= alphabet.Length;
+                    }
                     if (char.IsUpper(c))
                     {
                         outputText = outputText + char.ToUpper(alphabet[i]).ToString();
@@ -47,7 +51,7 @@ namespace Enigma
                     int i = alphabet.IndexOf(c) - iKey;
                     if (i < 0)
                     {
-                        i = alphabet.Length - 1 + i;
+                        i += alphabet.Length;
                     }
 
                     if (char.IsUpper(c))
