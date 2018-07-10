@@ -36,6 +36,8 @@
             this.EingabeLabel = new System.Windows.Forms.Label();
             this.AusgabeLabel = new System.Windows.Forms.Label();
             this.SaveToTextFile = new System.Windows.Forms.Button();
+            this.Encrypt = new System.Windows.Forms.CheckBox();
+            this.Decrypt = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // Eingabe
@@ -43,7 +45,7 @@
             this.Eingabe.Location = new System.Drawing.Point(13, 45);
             this.Eingabe.Multiline = true;
             this.Eingabe.Name = "Eingabe";
-            this.Eingabe.Size = new System.Drawing.Size(285, 345);
+            this.Eingabe.Size = new System.Drawing.Size(272, 345);
             this.Eingabe.TabIndex = 0;
             // 
             // DropDown
@@ -61,18 +63,17 @@
             this.DropDown.Location = new System.Drawing.Point(13, 396);
             this.DropDown.MaxDropDownItems = 3;
             this.DropDown.Name = "DropDown";
-            this.DropDown.Size = new System.Drawing.Size(285, 24);
+            this.DropDown.Size = new System.Drawing.Size(272, 24);
             this.DropDown.TabIndex = 1;
             this.DropDown.Tag = "";
-            this.DropDown.SelectedIndexChanged += new System.EventHandler(this.DropDown_SelectedIndexChanged);
             // 
             // Ausgabe
             // 
-            this.Ausgabe.Location = new System.Drawing.Point(304, 45);
+            this.Ausgabe.Location = new System.Drawing.Point(291, 45);
             this.Ausgabe.Multiline = true;
             this.Ausgabe.Name = "Ausgabe";
             this.Ausgabe.ReadOnly = true;
-            this.Ausgabe.Size = new System.Drawing.Size(254, 375);
+            this.Ausgabe.Size = new System.Drawing.Size(267, 345);
             this.Ausgabe.TabIndex = 2;
             this.Ausgabe.TextChanged += new System.EventHandler(this.Ausgabe_TextChanged);
             // 
@@ -89,7 +90,7 @@
             // Cancel
             // 
             this.Cancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Cancel.Location = new System.Drawing.Point(168, 426);
+            this.Cancel.Location = new System.Drawing.Point(155, 426);
             this.Cancel.Name = "Cancel";
             this.Cancel.Size = new System.Drawing.Size(130, 48);
             this.Cancel.TabIndex = 4;
@@ -120,18 +121,44 @@
             // SaveToTextFile
             // 
             this.SaveToTextFile.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.SaveToTextFile.Location = new System.Drawing.Point(305, 427);
+            this.SaveToTextFile.Location = new System.Drawing.Point(291, 427);
             this.SaveToTextFile.Name = "SaveToTextFile";
-            this.SaveToTextFile.Size = new System.Drawing.Size(253, 47);
+            this.SaveToTextFile.Size = new System.Drawing.Size(267, 47);
             this.SaveToTextFile.TabIndex = 7;
             this.SaveToTextFile.Text = "Save to TextFile";
             this.SaveToTextFile.UseVisualStyleBackColor = true;
+            // 
+            // Encrypt
+            // 
+            this.Encrypt.AutoSize = true;
+            this.Encrypt.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Encrypt.Location = new System.Drawing.Point(291, 396);
+            this.Encrypt.Name = "Encrypt";
+            this.Encrypt.Size = new System.Drawing.Size(100, 29);
+            this.Encrypt.TabIndex = 8;
+            this.Encrypt.Text = "Encrypt";
+            this.Encrypt.UseVisualStyleBackColor = true;
+            this.Encrypt.CheckedChanged += new System.EventHandler(this.Encrypt_CheckedChanged);
+            // 
+            // Decrypt
+            // 
+            this.Decrypt.AutoSize = true;
+            this.Decrypt.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Decrypt.Location = new System.Drawing.Point(457, 396);
+            this.Decrypt.Name = "Decrypt";
+            this.Decrypt.Size = new System.Drawing.Size(101, 29);
+            this.Decrypt.TabIndex = 9;
+            this.Decrypt.Text = "Decrypt";
+            this.Decrypt.UseVisualStyleBackColor = true;
+            this.Decrypt.CheckedChanged += new System.EventHandler(this.Decrypt_CheckedChanged);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(563, 486);
+            this.Controls.Add(this.Decrypt);
+            this.Controls.Add(this.Encrypt);
             this.Controls.Add(this.SaveToTextFile);
             this.Controls.Add(this.AusgabeLabel);
             this.Controls.Add(this.EingabeLabel);
@@ -157,6 +184,8 @@
         private System.Windows.Forms.Label EingabeLabel;
         private System.Windows.Forms.Label AusgabeLabel;
         private System.Windows.Forms.Button SaveToTextFile;
+        private System.Windows.Forms.CheckBox Encrypt;
+        private System.Windows.Forms.CheckBox Decrypt;
     }
 }
 

@@ -22,17 +22,28 @@ namespace Enigma
         {
 
         }
-
-        private void DropDown_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            //DropDown.Items.Remove("Select encryption...");
-        }
-
         private void Cancel_Click(object sender, EventArgs e)
         {
             Eingabe.Text = "";
             Ausgabe.Text = "";
             DropDown.SelectedIndex = 0;
+        }
+
+        private void Encrypt_CheckedChanged(object sender, EventArgs e)
+        {
+            if (Encrypt.Checked == true)
+            {
+                Decrypt.Checked = false;
+            }
+        }
+
+        private void Decrypt_CheckedChanged(object sender, EventArgs e)
+        {
+            if (Decrypt.Checked == true)
+            {
+                Encrypt.Checked = false;
+            }
+
         }
     }
 }
