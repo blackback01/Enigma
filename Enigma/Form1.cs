@@ -14,6 +14,8 @@ namespace Enigma
     {
         Substitution Sub = new Substitution();
         Substitution activeSub = new Caesar();
+        Viginere v = new Viginere();
+
         public Form1()
         {
             InitializeComponent();
@@ -52,12 +54,13 @@ namespace Enigma
 
         private void DropDown_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if(DropDown.SelectedIndex == 2)
+            if(DropDown.SelectedIndex == 2 || DropDown.SelectedIndex == 4)
             {
                 CustomParameter.ReadOnly = false;
-            }else if(DropDown.SelectedIndex != 2)
+            }else if(DropDown.SelectedIndex != 2 || DropDown.SelectedIndex != 4)
             {
                 CustomParameter.ReadOnly = true;
+                CustomParameter.Text = "";
             }
         }
 
@@ -73,6 +76,7 @@ namespace Enigma
                 Output.Text = activeSub.Decrypt(Input.Text);
             }
             #endregion
+            #region Rot Encrypt & Decrypt
             if (DropDown.SelectedIndex == 2 && Encrypt.Checked == true)
             {
                 activeSub = new Rot(Convert.ToInt32(CustomParameter.Text));
@@ -82,6 +86,15 @@ namespace Enigma
             {
                 activeSub = new Rot(Convert.ToInt32(CustomParameter.Text));
                 Output.Text = activeSub.Decrypt(Input.Text);
+            }
+            #endregion
+            if (DropDown.SelectedIndex == 4 && Encrypt.Checked == true)
+            {
+                Output.Text = v.Encrypt(Input.Text, CustomParameter.Text);
+            }
+            if (DropDown.SelectedIndex == 4 && Decrypt.Checked == true)
+            {
+                Output.Text = v.Decrypt(Input.Text, CustomParameter.Text);
             }
         }
         private void CopyToClipboard_Click(object sender, EventArgs e)

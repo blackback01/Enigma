@@ -87,7 +87,7 @@
             // Start
             // 
             this.Start.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Start.Location = new System.Drawing.Point(12, 466);
+            this.Start.Location = new System.Drawing.Point(12, 465);
             this.Start.Name = "Start";
             this.Start.Size = new System.Drawing.Size(130, 48);
             this.Start.TabIndex = 3;
@@ -98,7 +98,7 @@
             // Cancel
             // 
             this.Cancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Cancel.Location = new System.Drawing.Point(155, 466);
+            this.Cancel.Location = new System.Drawing.Point(155, 465);
             this.Cancel.Name = "Cancel";
             this.Cancel.Size = new System.Drawing.Size(130, 48);
             this.Cancel.TabIndex = 4;
@@ -129,7 +129,7 @@
             // SaveToTextFile
             // 
             this.SaveToTextFile.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.SaveToTextFile.Location = new System.Drawing.Point(291, 427);
+            this.SaveToTextFile.Location = new System.Drawing.Point(291, 426);
             this.SaveToTextFile.Name = "SaveToTextFile";
             this.SaveToTextFile.Size = new System.Drawing.Size(267, 34);
             this.SaveToTextFile.TabIndex = 7;
@@ -163,7 +163,7 @@
             // CopyToClipboard
             // 
             this.CopyToClipboard.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CopyToClipboard.Location = new System.Drawing.Point(291, 467);
+            this.CopyToClipboard.Location = new System.Drawing.Point(291, 466);
             this.CopyToClipboard.Name = "CopyToClipboard";
             this.CopyToClipboard.Size = new System.Drawing.Size(267, 47);
             this.CopyToClipboard.TabIndex = 10;
@@ -174,12 +174,12 @@
             // CustomParameter
             // 
             this.CustomParameter.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CustomParameter.Location = new System.Drawing.Point(12, 427);
+            this.CustomParameter.Location = new System.Drawing.Point(12, 426);
             this.CustomParameter.Name = "CustomParameter";
             this.CustomParameter.ReadOnly = true;
             this.CustomParameter.Size = new System.Drawing.Size(273, 34);
             this.CustomParameter.TabIndex = 12;
-            this.TTCP.SetToolTip(this.CustomParameter, "Custom Parameter");
+            this.TTCP.SetToolTip(this.CustomParameter, " ");
             this.CustomParameter.TextChanged += new System.EventHandler(this.CustomParameter_TextChanged);
             // 
             // TTCP
@@ -191,7 +191,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
             this.AutoSize = true;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.ClientSize = new System.Drawing.Size(563, 517);
+            this.ClientSize = new System.Drawing.Size(567, 517);
             this.Controls.Add(this.CustomParameter);
             this.Controls.Add(this.CopyToClipboard);
             this.Controls.Add(this.Decrypt);
