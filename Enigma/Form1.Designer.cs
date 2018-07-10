@@ -38,6 +38,7 @@
             this.SaveToTextFile = new System.Windows.Forms.Button();
             this.Encrypt = new System.Windows.Forms.CheckBox();
             this.Decrypt = new System.Windows.Forms.CheckBox();
+            this.CopyToClipboard = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // Eingabe
@@ -58,6 +59,7 @@
             this.DropDown.Items.AddRange(new object[] {
             "Select encryption...",
             "Caesar",
+            "Rot",
             "Rot13",
             "Vigenère"});
             this.DropDown.Location = new System.Drawing.Point(13, 396);
@@ -66,6 +68,7 @@
             this.DropDown.Size = new System.Drawing.Size(272, 24);
             this.DropDown.TabIndex = 1;
             this.DropDown.Tag = "";
+            this.DropDown.SelectedIndexChanged += new System.EventHandler(this.DropDown_SelectedIndexChanged);
             // 
             // Ausgabe
             // 
@@ -86,6 +89,7 @@
             this.Start.TabIndex = 3;
             this.Start.Text = "Start";
             this.Start.UseVisualStyleBackColor = true;
+            this.Start.Click += new System.EventHandler(this.Start_Click);
             // 
             // Cancel
             // 
@@ -152,11 +156,22 @@
             this.Decrypt.UseVisualStyleBackColor = true;
             this.Decrypt.CheckedChanged += new System.EventHandler(this.Decrypt_CheckedChanged);
             // 
+            // CopyToClipboard
+            // 
+            this.CopyToClipboard.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CopyToClipboard.Location = new System.Drawing.Point(291, 480);
+            this.CopyToClipboard.Name = "CopyToClipboard";
+            this.CopyToClipboard.Size = new System.Drawing.Size(267, 47);
+            this.CopyToClipboard.TabIndex = 10;
+            this.CopyToClipboard.Text = "Copy to Clipboard";
+            this.CopyToClipboard.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(563, 486);
+            this.ClientSize = new System.Drawing.Size(563, 531);
+            this.Controls.Add(this.CopyToClipboard);
             this.Controls.Add(this.Decrypt);
             this.Controls.Add(this.Encrypt);
             this.Controls.Add(this.SaveToTextFile);
@@ -186,6 +201,7 @@
         private System.Windows.Forms.Button SaveToTextFile;
         private System.Windows.Forms.CheckBox Encrypt;
         private System.Windows.Forms.CheckBox Decrypt;
+        private System.Windows.Forms.Button CopyToClipboard;
     }
 }
 

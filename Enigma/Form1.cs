@@ -12,6 +12,8 @@ namespace Enigma
 {
     public partial class Form1 : Form
     {
+        Substitution Sub = new Substitution();
+        Substitution activeSub = new Caesar();
         public Form1()
         {
             InitializeComponent();
@@ -33,6 +35,7 @@ namespace Enigma
         {
             if (Encrypt.Checked == true)
             {
+                Ausgabe.Text = "";
                 Decrypt.Checked = false;
             }
         }
@@ -41,9 +44,26 @@ namespace Enigma
         {
             if (Decrypt.Checked == true)
             {
+                Ausgabe.Text = "";
                 Encrypt.Checked = false;
             }
 
+        }
+
+        private void DropDown_SelectedIndexChanged(object sender, EventArgs e)
+        {
+        }
+
+        private void Start_Click(object sender, EventArgs e)
+        {
+            if (DropDown.SelectedIndex == 1 && Encrypt.Checked == true)
+            {
+                Ausgabe.Text = activeSub.Encrypt(Eingabe.Text);
+            }
+            if (DropDown.SelectedIndex == 1 && Decrypt.Checked == true)
+            {
+                Ausgabe.Text = activeSub.Decrypt(Eingabe.Text);
+            }
         }
     }
 }
