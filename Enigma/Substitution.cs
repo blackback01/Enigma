@@ -4,7 +4,7 @@ namespace Enigma
 {
     public class Substitution
     {
-        int iKey;
+        protected int iKey;
         string alphabet = "abcdefghijklmnopqrstuvwxyz";
 
         public Substitution()
@@ -13,48 +13,58 @@ namespace Enigma
 
         public string Encrypt(string inputText)
         {
-            string outputText;
+            int counter = 0;
+            string outputText = "";
             foreach (char c in inputText)
             {
-                if (alphabet.Contains(c))
+                if (alphabet.Contains(c.ToString()))
                 {
-                    int i = alphabet.IndexOf(c) + iKey;
-                    if (c.IsUpper())
+                    int i = alphabet.IndexOf(c, counter) + iKey;
+                    if (char.IsUpper(c))
                     {
-                        outputText = outputText + alphabet[i].ToUpper();
+                        outputText = outputText + char.ToUpper(alphabet[i]).ToString();
                     } else
                     {
-                        outputText = outputText + alphabet[i].ToLower();
+                        outputText = outputText + char.ToLower(alphabet[i]).ToString();
                     }
                 } else
                 {
-                    outputText = outputText + c;
+                    outputText = outputText + c.ToString();
                 }
+                counter++;
             }
             return outputText;
         }
 
-        public void Decrypt(string inputText)
+        public string Decrypt(string inputText)
         {
-            string outputText;
+            int counter = 0;
+            string outputText = "";
             foreach (char c in inputText)
             {
-                if (alphabet.Contains(c))
+                if (alphabet.Contains(c.ToString()))
                 {
-                    int i = alphabet.IndexOf(c) + iKey;
-                    if (c.IsUpper())
+                    int i = alphabet.IndexOf(c) - iKey;
+                    if (i < 0)
                     {
-                        outputText = outputText + alphabet[i].ToUpper();
+                        i = alphabet.Length - 1 + i;
+                    }
+
+                    if (char.IsUpper(c))
+                    {
+                        outputText = outputText + char.ToUpper(alphabet[i]).ToString();
                     }
                     else
                     {
-                        outputText = outputText + alphabet[i].ToLower();
+                        outputText = outputText + char.ToLower(alphabet[i]).ToString();
                     }
                 } else
                 {
-                    outputText = outputText + c;
+                    outputText = outputText + c.ToString();
                 }
+                counter++;
             }
+            return outputText;
         }
     }
 }
