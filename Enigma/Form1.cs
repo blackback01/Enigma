@@ -20,14 +20,14 @@ namespace Enigma
             DropDown.SelectedIndex = 0;
         }
 
-        private void Ausgabe_TextChanged(object sender, EventArgs e)
+        private void Output_TextChanged(object sender, EventArgs e)
         {
 
         }
         private void Cancel_Click(object sender, EventArgs e)
         {
-            Eingabe.Text = "";
-            Ausgabe.Text = "";
+            Input.Text = "";
+            Output.Text = "";
             DropDown.SelectedIndex = 0;
         }
 
@@ -35,7 +35,7 @@ namespace Enigma
         {
             if (Encrypt.Checked == true)
             {
-                Ausgabe.Text = "";
+                Output.Text = "";
                 Decrypt.Checked = false;
             }
         }
@@ -44,7 +44,7 @@ namespace Enigma
         {
             if (Decrypt.Checked == true)
             {
-                Ausgabe.Text = "";
+                Output.Text = "";
                 Encrypt.Checked = false;
             }
 
@@ -52,18 +52,46 @@ namespace Enigma
 
         private void DropDown_SelectedIndexChanged(object sender, EventArgs e)
         {
+            if(DropDown.SelectedIndex == 2)
+            {
+                CustomParameter.ReadOnly = false;
+            }else if(DropDown.SelectedIndex != 2)
+            {
+                CustomParameter.ReadOnly = true;
+            }
         }
 
         private void Start_Click(object sender, EventArgs e)
         {
+            #region  Caesar Encrypt & Decrypt
             if (DropDown.SelectedIndex == 1 && Encrypt.Checked == true)
             {
-                Ausgabe.Text = activeSub.Encrypt(Eingabe.Text);
+                Output.Text = activeSub.Encrypt(Input.Text);
             }
             if (DropDown.SelectedIndex == 1 && Decrypt.Checked == true)
             {
-                Ausgabe.Text = activeSub.Decrypt(Eingabe.Text);
+                Output.Text = activeSub.Decrypt(Input.Text);
             }
+            #endregion
+            if (DropDown.SelectedIndex == 2 && Encrypt.Checked == true)
+            {
+                activeSub = new Rot(Convert.ToInt32(CustomParameter.Text));
+                Output.Text = activeSub.Encrypt(Input.Text);
+            }
+            if (DropDown.SelectedIndex == 2 && Decrypt.Checked == true)
+            {
+                activeSub = new Rot(Convert.ToInt32(CustomParameter.Text));
+                Output.Text = activeSub.Decrypt(Input.Text);
+            }
+        }
+        private void CopyToClipboard_Click(object sender, EventArgs e)
+        {
+            Clipboard.SetText(Output.Text);
+        }
+
+        private void CustomParameter_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
