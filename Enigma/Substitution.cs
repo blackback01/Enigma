@@ -5,7 +5,7 @@ namespace Enigma
     public class Substitution
     {
         protected int iKey;
-        string alphabet = "abcdefghijklmnopqrstuvwxyz";
+        protected string alphabet = "abcdefghijklmnopqrstuvwxyz";
 
         public Substitution()
         {
