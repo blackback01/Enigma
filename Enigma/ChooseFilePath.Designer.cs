@@ -28,18 +28,19 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Choose_a_file_path));
+            this.Destination = new System.Windows.Forms.TextBox();
             this.OK = new System.Windows.Forms.Button();
             this.Cancel = new System.Windows.Forms.Button();
             this.Search = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // textBox1
+            // Destination
             // 
-            this.textBox1.Location = new System.Drawing.Point(13, 13);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(299, 22);
-            this.textBox1.TabIndex = 0;
+            this.Destination.Location = new System.Drawing.Point(13, 13);
+            this.Destination.Name = "Destination";
+            this.Destination.Size = new System.Drawing.Size(299, 22);
+            this.Destination.TabIndex = 0;
             // 
             // OK
             // 
@@ -69,6 +70,7 @@
             this.Search.TabIndex = 3;
             this.Search.Text = "Search...";
             this.Search.UseVisualStyleBackColor = true;
+            this.Search.Click += new System.EventHandler(this.Search_Click);
             // 
             // Choose_a_file_path
             // 
@@ -78,7 +80,8 @@
             this.Controls.Add(this.Search);
             this.Controls.Add(this.Cancel);
             this.Controls.Add(this.OK);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.Destination);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Choose_a_file_path";
             this.Text = "Choose a File Path";
             this.ResumeLayout(false);
@@ -88,7 +91,7 @@
 
         #endregion
 
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox Destination;
         private System.Windows.Forms.Button OK;
         private System.Windows.Forms.Button Cancel;
         private System.Windows.Forms.Button Search;

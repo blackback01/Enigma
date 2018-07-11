@@ -27,6 +27,25 @@ namespace Enigma
             encryption = new StringBuilder();
 
             inputText = inputText.Replace(" ", "");
+            inputText = inputText.Replace("!", "");
+            inputText = inputText.Replace("?", "");
+            inputText = inputText.Replace(".", "");
+            inputText = inputText.Replace("-", "");
+            inputText = inputText.Replace("(", "");
+            inputText = inputText.Replace(")", "");
+            inputText = inputText.Replace(":", "");
+            inputText = inputText.Replace("[", "");
+            inputText = inputText.Replace("]", "");
+            inputText = inputText.Replace("0", "");
+            inputText = inputText.Replace("1", "");
+            inputText = inputText.Replace("2", "");
+            inputText = inputText.Replace("3", "");
+            inputText = inputText.Replace("4", "");
+            inputText = inputText.Replace("5", "");
+            inputText = inputText.Replace("6", "");
+            inputText = inputText.Replace("7", "");
+            inputText = inputText.Replace("8", "");
+            inputText = inputText.Replace("9", "");
             keyText = keyText.Replace(" ", "");
 
             //Encryption magic

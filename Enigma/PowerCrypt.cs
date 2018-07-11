@@ -130,7 +130,9 @@ namespace Enigma
 
         private void SaveToTextFile_Click(object sender, EventArgs e)
         {
-            System.IO.File.WriteAllText("", Output.Text);
+            Choose_a_file_path PopUp = new Choose_a_file_path();
+            PopUp.Show();
+           // System.IO.File.WriteAllText("", Output.Text);
         }
     }
 }

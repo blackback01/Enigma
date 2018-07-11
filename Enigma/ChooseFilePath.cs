@@ -16,5 +16,10 @@ namespace Enigma
         {
             InitializeComponent();
         }
+
+        private void Search_Click(object sender, EventArgs e)
+        {
+            //system.Process.Start("explorer.exe", "-p");
+        }
     }
 }
