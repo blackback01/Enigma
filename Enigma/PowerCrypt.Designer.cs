@@ -1,6 +1,6 @@
 ﻿namespace Enigma
 {
-    partial class Form1
+    partial class PowerCrypt
     {
         /// <summary>
         /// Erforderliche Designervariable.
@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PowerCrypt));
             this.Input = new System.Windows.Forms.TextBox();
             this.DropDown = new System.Windows.Forms.ComboBox();
             this.Output = new System.Windows.Forms.TextBox();
@@ -61,11 +61,12 @@
             this.DropDown.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.DropDown.FormattingEnabled = true;
             this.DropDown.Items.AddRange(new object[] {
-            "Select encryption...",
-            "Caesar",
-            "Rot",
-            "Rot13",
-            "Vigenère"});
+            "Select encryption...", //0
+            "Caesar",               //1
+            "Rot",                  //2
+            "Rot13",                //3
+            "Vigenère",             //4
+            "Transposition"});      //5
             this.DropDown.Location = new System.Drawing.Point(13, 396);
             this.DropDown.MaxDropDownItems = 3;
             this.DropDown.Name = "DropDown";
@@ -135,6 +136,7 @@
             this.SaveToTextFile.TabIndex = 7;
             this.SaveToTextFile.Text = "Save to TextFile";
             this.SaveToTextFile.UseVisualStyleBackColor = true;
+            this.SaveToTextFile.Click += new System.EventHandler(this.SaveToTextFile_Click);
             // 
             // Encrypt
             // 
@@ -180,13 +182,12 @@
             this.CustomParameter.Size = new System.Drawing.Size(273, 34);
             this.CustomParameter.TabIndex = 12;
             this.TTCP.SetToolTip(this.CustomParameter, " ");
-            this.CustomParameter.TextChanged += new System.EventHandler(this.CustomParameter_TextChanged);
             // 
             // TTCP
             // 
             this.TTCP.ToolTipTitle = "Custom parameter";
             // 
-            // Form1
+            // PowerCrypt
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
             this.AutoSize = true;
@@ -207,8 +208,8 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "Form1";
-            this.Text = "Form1";
+            this.Name = "PowerCrypt";
+            this.Text = "PowerCrypt";
             this.TransparencyKey = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
             this.ResumeLayout(false);
             this.PerformLayout();

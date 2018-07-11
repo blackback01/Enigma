@@ -10,13 +10,15 @@ using System.Windows.Forms;
 
 namespace Enigma
 {
-    public partial class Form1 : Form
+    public partial class PowerCrypt : Form
     {
+        
         Substitution Sub = new Substitution();
         Substitution activeSub = new Caesar();
         Viginere v = new Viginere();
+        Transposition t;
 
-        public Form1()
+        public PowerCrypt()
         {
             InitializeComponent();
             DropDown.SelectedIndex = 0;
@@ -54,7 +56,7 @@ namespace Enigma
 
         private void DropDown_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if(DropDown.SelectedIndex == 2 || DropDown.SelectedIndex == 4)
+            if(DropDown.SelectedIndex == 2 || DropDown.SelectedIndex == 4 ||DropDown.SelectedIndex == 5)
             {
                 CustomParameter.ReadOnly = false;
             }else if(DropDown.SelectedIndex != 2 || DropDown.SelectedIndex != 4)
@@ -88,6 +90,17 @@ namespace Enigma
                 Output.Text = activeSub.Decrypt(Input.Text);
             }
             #endregion
+            #region Rot13 Encrypt & Decrypt
+            if (DropDown.SelectedIndex == 3 && Encrypt.Checked == true)
+            {
+                Output.Text = activeSub.Encrypt(Input.Text);
+            }
+            if (DropDown.SelectedIndex == 3 && Decrypt.Checked == true)
+            {
+                Output.Text = activeSub.Decrypt(Input.Text);
+            }
+            #endregion
+            #region Vigenere Encrypt & Decrypt
             if (DropDown.SelectedIndex == 4 && Encrypt.Checked == true)
             {
                 Output.Text = v.Encrypt(Input.Text, CustomParameter.Text);
@@ -96,15 +109,28 @@ namespace Enigma
             {
                 Output.Text = v.Decrypt(Input.Text, CustomParameter.Text);
             }
+            #endregion
+            #region Transposition Encrypt & Decrypt
+            if (DropDown.SelectedIndex == 5 && Encrypt.Checked == true)
+            {
+                t = new Transposition(Convert.ToInt32(CustomParameter.Text));   
+                Output.Text = activeSub.Encrypt(Input.Text);
+            }
+            if (DropDown.SelectedIndex == 5 && Decrypt.Checked == true)
+            {
+                t = new Transposition(Convert.ToInt32(CustomParameter.Text));
+                Output.Text = activeSub.Decrypt(Input.Text);
+            }
+            #endregion
         }
         private void CopyToClipboard_Click(object sender, EventArgs e)
         {
             Clipboard.SetText(Output.Text);
         }
 
-        private void CustomParameter_TextChanged(object sender, EventArgs e)
+        private void SaveToTextFile_Click(object sender, EventArgs e)
         {
-
+            System.IO.File.WriteAllText("", Output.Text);
         }
     }
 }
