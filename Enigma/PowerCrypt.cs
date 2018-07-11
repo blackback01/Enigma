@@ -125,12 +125,26 @@ namespace Enigma
         }
         private void CopyToClipboard_Click(object sender, EventArgs e)
         {
-            Clipboard.SetText(Output.Text);
+            if (Output.Text != "")
+            {
+                Clipboard.SetText(Output.Text);
+            }
+            else
+            {
+
+            }
         }
 
         private void SaveToTextFile_Click(object sender, EventArgs e)
         {
-            System.IO.File.WriteAllText("", Output.Text);
-        }
+            SaveFileDialog saveFileDialog1 = new SaveFileDialog();
+            saveFileDialog1.Filter = "Text File|*.txt";
+            saveFileDialog1.Title = "Save your encrypted or decrypted Message";
+            saveFileDialog1.ShowDialog();
+            if (saveFileDialog1.FileName != "")
+            {
+                System.IO.FileStream fs =
+                   (System.IO.FileStream)saveFileDialog1.OpenFile();
+            }
     }
 }
