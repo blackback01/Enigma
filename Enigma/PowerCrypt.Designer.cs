@@ -44,17 +44,22 @@
             this.CustomParameter = new System.Windows.Forms.TextBox();
             this.TTCP = new System.Windows.Forms.ToolTip(this.components);
             this.Theme = new System.Windows.Forms.Button();
+            this.FileInput = new System.Windows.Forms.Button();
+            this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
             this.SuspendLayout();
             // 
             // Input
             // 
             this.Input.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.Input.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.Input.Location = new System.Drawing.Point(13, 45);
+            this.Input.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Input.ForeColor = System.Drawing.Color.Fuchsia;
+            this.Input.Location = new System.Drawing.Point(12, 44);
             this.Input.Multiline = true;
             this.Input.Name = "Input";
-            this.Input.Size = new System.Drawing.Size(272, 345);
+            this.Input.Size = new System.Drawing.Size(290, 345);
             this.Input.TabIndex = 0;
+            this.Input.TextChanged += new System.EventHandler(this.Input_TextChanged);
             // 
             // DropDown
             // 
@@ -72,11 +77,12 @@
             "Rot",
             "Rot13",
             "Vigenère",
-            "Transposition"});
-            this.DropDown.Location = new System.Drawing.Point(13, 396);
+            "Transposition",
+            "AES_CBC"});
+            this.DropDown.Location = new System.Drawing.Point(12, 395);
             this.DropDown.MaxDropDownItems = 3;
             this.DropDown.Name = "DropDown";
-            this.DropDown.Size = new System.Drawing.Size(272, 24);
+            this.DropDown.Size = new System.Drawing.Size(290, 24);
             this.DropDown.TabIndex = 1;
             this.DropDown.Tag = "";
             this.DropDown.SelectedIndexChanged += new System.EventHandler(this.DropDown_SelectedIndexChanged);
@@ -85,11 +91,13 @@
             // 
             this.Output.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.Output.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.Output.Location = new System.Drawing.Point(291, 45);
+            this.Output.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Output.ForeColor = System.Drawing.Color.Fuchsia;
+            this.Output.Location = new System.Drawing.Point(308, 45);
             this.Output.Multiline = true;
             this.Output.Name = "Output";
             this.Output.ReadOnly = true;
-            this.Output.Size = new System.Drawing.Size(267, 345);
+            this.Output.Size = new System.Drawing.Size(276, 344);
             this.Output.TabIndex = 2;
             this.Output.TextChanged += new System.EventHandler(this.Output_TextChanged);
             // 
@@ -98,9 +106,9 @@
             this.Start.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.Start.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Start.ForeColor = System.Drawing.Color.White;
-            this.Start.Location = new System.Drawing.Point(12, 466);
+            this.Start.Location = new System.Drawing.Point(12, 465);
             this.Start.Name = "Start";
-            this.Start.Size = new System.Drawing.Size(130, 48);
+            this.Start.Size = new System.Drawing.Size(143, 48);
             this.Start.TabIndex = 3;
             this.Start.Text = "Start";
             this.Start.UseVisualStyleBackColor = false;
@@ -111,9 +119,9 @@
             this.Cancel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.Cancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Cancel.ForeColor = System.Drawing.Color.White;
-            this.Cancel.Location = new System.Drawing.Point(155, 466);
+            this.Cancel.Location = new System.Drawing.Point(161, 465);
             this.Cancel.Name = "Cancel";
-            this.Cancel.Size = new System.Drawing.Size(130, 48);
+            this.Cancel.Size = new System.Drawing.Size(141, 48);
             this.Cancel.TabIndex = 4;
             this.Cancel.Text = "Cancel";
             this.Cancel.UseVisualStyleBackColor = false;
@@ -137,7 +145,7 @@
             this.AusgabeLabel.BackColor = System.Drawing.Color.Transparent;
             this.AusgabeLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.AusgabeLabel.ForeColor = System.Drawing.Color.White;
-            this.AusgabeLabel.Location = new System.Drawing.Point(443, 4);
+            this.AusgabeLabel.Location = new System.Drawing.Point(458, 4);
             this.AusgabeLabel.Name = "AusgabeLabel";
             this.AusgabeLabel.Size = new System.Drawing.Size(115, 38);
             this.AusgabeLabel.TabIndex = 6;
@@ -148,9 +156,9 @@
             this.SaveToTextFile.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.SaveToTextFile.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.SaveToTextFile.ForeColor = System.Drawing.Color.White;
-            this.SaveToTextFile.Location = new System.Drawing.Point(291, 426);
+            this.SaveToTextFile.Location = new System.Drawing.Point(306, 426);
             this.SaveToTextFile.Name = "SaveToTextFile";
-            this.SaveToTextFile.Size = new System.Drawing.Size(267, 34);
+            this.SaveToTextFile.Size = new System.Drawing.Size(278, 34);
             this.SaveToTextFile.TabIndex = 7;
             this.SaveToTextFile.Text = "Save to TextFile";
             this.SaveToTextFile.UseVisualStyleBackColor = false;
@@ -162,7 +170,7 @@
             this.Encrypt.BackColor = System.Drawing.Color.Transparent;
             this.Encrypt.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Encrypt.ForeColor = System.Drawing.Color.White;
-            this.Encrypt.Location = new System.Drawing.Point(291, 396);
+            this.Encrypt.Location = new System.Drawing.Point(306, 396);
             this.Encrypt.Name = "Encrypt";
             this.Encrypt.Size = new System.Drawing.Size(100, 29);
             this.Encrypt.TabIndex = 8;
@@ -176,7 +184,7 @@
             this.Decrypt.BackColor = System.Drawing.Color.Transparent;
             this.Decrypt.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Decrypt.ForeColor = System.Drawing.Color.White;
-            this.Decrypt.Location = new System.Drawing.Point(457, 396);
+            this.Decrypt.Location = new System.Drawing.Point(472, 396);
             this.Decrypt.Name = "Decrypt";
             this.Decrypt.Size = new System.Drawing.Size(101, 29);
             this.Decrypt.TabIndex = 9;
@@ -189,9 +197,9 @@
             this.CopyToClipboard.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.CopyToClipboard.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CopyToClipboard.ForeColor = System.Drawing.Color.White;
-            this.CopyToClipboard.Location = new System.Drawing.Point(291, 466);
+            this.CopyToClipboard.Location = new System.Drawing.Point(306, 466);
             this.CopyToClipboard.Name = "CopyToClipboard";
-            this.CopyToClipboard.Size = new System.Drawing.Size(267, 48);
+            this.CopyToClipboard.Size = new System.Drawing.Size(278, 48);
             this.CopyToClipboard.TabIndex = 10;
             this.CopyToClipboard.Text = "Copy to Clipboard";
             this.CopyToClipboard.UseVisualStyleBackColor = false;
@@ -205,9 +213,10 @@
             this.CustomParameter.Location = new System.Drawing.Point(12, 426);
             this.CustomParameter.Name = "CustomParameter";
             this.CustomParameter.ReadOnly = true;
-            this.CustomParameter.Size = new System.Drawing.Size(273, 34);
+            this.CustomParameter.Size = new System.Drawing.Size(143, 34);
             this.CustomParameter.TabIndex = 12;
             this.TTCP.SetToolTip(this.CustomParameter, " ");
+            this.CustomParameter.TextChanged += new System.EventHandler(this.CustomParameter_TextChanged);
             // 
             // TTCP
             // 
@@ -222,13 +231,26 @@
             this.Theme.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.Theme.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Theme.ForeColor = System.Drawing.Color.White;
-            this.Theme.Location = new System.Drawing.Point(155, 3);
+            this.Theme.Location = new System.Drawing.Point(161, 3);
             this.Theme.Name = "Theme";
-            this.Theme.Size = new System.Drawing.Size(267, 38);
+            this.Theme.Size = new System.Drawing.Size(278, 38);
             this.Theme.TabIndex = 13;
             this.Theme.Text = "Dark/Light Theme";
             this.Theme.UseVisualStyleBackColor = false;
             this.Theme.Click += new System.EventHandler(this.Theme_Click);
+            // 
+            // FileInput
+            // 
+            this.FileInput.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.FileInput.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.FileInput.ForeColor = System.Drawing.Color.White;
+            this.FileInput.Location = new System.Drawing.Point(161, 426);
+            this.FileInput.Name = "FileInput";
+            this.FileInput.Size = new System.Drawing.Size(141, 34);
+            this.FileInput.TabIndex = 14;
+            this.FileInput.Text = "Files In";
+            this.FileInput.UseVisualStyleBackColor = false;
+            this.FileInput.Click += new System.EventHandler(this.FileInput_Click);
             // 
             // PowerCrypt
             // 
@@ -236,7 +258,8 @@
             this.AutoSize = true;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(43)))), ((int)(((byte)(43)))));
-            this.ClientSize = new System.Drawing.Size(567, 520);
+            this.ClientSize = new System.Drawing.Size(596, 520);
+            this.Controls.Add(this.FileInput);
             this.Controls.Add(this.Theme);
             this.Controls.Add(this.CustomParameter);
             this.Controls.Add(this.CopyToClipboard);
@@ -277,6 +300,8 @@
         private System.Windows.Forms.TextBox CustomParameter;
         private System.Windows.Forms.ToolTip TTCP;
         private System.Windows.Forms.Button Theme;
+        private System.Windows.Forms.Button FileInput;
+        private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog1;
     }
 }
 

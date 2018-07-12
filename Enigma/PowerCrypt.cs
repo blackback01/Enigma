@@ -18,6 +18,7 @@ namespace Enigma
         Substitution activeSub = new Caesar();
         Viginere v = new Viginere();
         Transposition t;
+        AES_CBC aes = new AES_CBC();
 
         public PowerCrypt()
         {
@@ -124,6 +125,16 @@ namespace Enigma
                 Output.Text = t.Decrypt(Input.Text);
             }
             #endregion
+            #region AES
+            if (DropDown.SelectedIndex == 6 && Encrypt.Checked == true)
+            {
+                Output.Text = aes.Encrypt(Input.Text);
+            }
+            if (DropDown.SelectedIndex == 6 && Decrypt.Checked == true)
+            {
+                Output.Text = aes.Encrypt(Input.Text);
+            }
+            #endregion
         }
         private void CopyToClipboard_Click(object sender, EventArgs e)
         {
@@ -161,6 +172,22 @@ namespace Enigma
             YouWillJoinUs YWJU = new YouWillJoinUs();
             YWJU.Show();
 
+        }
+
+        private void Input_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void CustomParameter_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void FileInput_Click(object sender, EventArgs e)
+        {
+            FolderBrowserDialog fbd = new FolderBrowserDialog();
+            fbd.ShowDialog();
         }
     }
 }
