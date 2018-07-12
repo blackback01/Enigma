@@ -7,12 +7,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
 
 namespace Enigma
 {
     public partial class PowerCrypt : Form
     {
-        
+
         Substitution Sub = new Substitution();
         Substitution activeSub = new Caesar();
         Viginere v = new Viginere();
@@ -56,10 +57,11 @@ namespace Enigma
 
         private void DropDown_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if(DropDown.SelectedIndex == 2 || DropDown.SelectedIndex == 4 ||DropDown.SelectedIndex == 5)
+            if (DropDown.SelectedIndex == 2 || DropDown.SelectedIndex == 4 || DropDown.SelectedIndex == 5)
             {
                 CustomParameter.ReadOnly = false;
-            }else if(DropDown.SelectedIndex != 2 || DropDown.SelectedIndex != 4)
+            }
+            else if (DropDown.SelectedIndex != 2 || DropDown.SelectedIndex != 4)
             {
                 CustomParameter.ReadOnly = true;
                 CustomParameter.Text = "";
@@ -113,7 +115,7 @@ namespace Enigma
             #region Transposition Encrypt & Decrypt
             if (DropDown.SelectedIndex == 5 && Encrypt.Checked == true)
             {
-                t = new Transposition(Convert.ToInt32(CustomParameter.Text));   
+                t = new Transposition(Convert.ToInt32(CustomParameter.Text));
                 Output.Text = activeSub.Encrypt(Input.Text);
             }
             if (DropDown.SelectedIndex == 5 && Decrypt.Checked == true)
@@ -141,10 +143,17 @@ namespace Enigma
             saveFileDialog1.Filter = "Text File|*.txt";
             saveFileDialog1.Title = "Save your encrypted or decrypted Message";
             saveFileDialog1.ShowDialog();
-            if (saveFileDialog1.FileName != "")
+            if (!File.Exists(saveFileDialog1.FileName))
             {
-                System.IO.FileStream fs =
-                   (System.IO.FileStream)saveFileDialog1.OpenFile();
+                string Text = Output.Text + Environment.NewLine;
+                File.WriteAllText(saveFileDialog1.FileName, Text);
             }
+            else if (File.Exists(saveFileDialog1.FileName))
+            {
+                File.Delete(saveFileDialog1.FileName);
+                string Text = Output.Text + Environment.NewLine;
+                File.AppendAllText(saveFileDialog1.FileName, Text);
+            }
+        }
     }
 }
