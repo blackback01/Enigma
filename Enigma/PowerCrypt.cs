@@ -116,12 +116,12 @@ namespace Enigma
             if (DropDown.SelectedIndex == 5 && Encrypt.Checked == true)
             {
                 t = new Transposition(Convert.ToInt32(CustomParameter.Text));
-                Output.Text = activeSub.Encrypt(Input.Text);
+                Output.Text =t.Encrypt(Input.Text);
             }
             if (DropDown.SelectedIndex == 5 && Decrypt.Checked == true)
             {
                 t = new Transposition(Convert.ToInt32(CustomParameter.Text));
-                Output.Text = activeSub.Decrypt(Input.Text);
+                Output.Text = t.Decrypt(Input.Text);
             }
             #endregion
         }

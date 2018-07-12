@@ -11,10 +11,11 @@ public class Transposition
 
     public string Encrypt(string inputText)
     {
-        int charCounter = 0;
+        int charCounter;
         string outputText = "";
-        for (int counter = 0; counter <= key; counter++)
+        for (int counter = 0; counter < key; counter++)
         {
+            charCounter = 0;
             foreach (char c in inputText)
             {
                 if (inputText.IndexOf(c, charCounter) % key == counter)
@@ -29,24 +30,31 @@ public class Transposition
 
     public string Decrypt(string inputText)
     {
-        int counter = 0;
-        int _counter = 0;
+        int index = 0;
+
+        int block = 0;
+
+        int indexInBlock = 0;
+
+        int posInOutputArr = 0;
+
+        string outputText = new string('_', inputText.Length);
+
         char[] outputArray = new char[inputText.Length];
-        string outputText = "";
-        for (int i = 0; i < inputText.Length / key; i++)
+
+        foreach (char c in inputText)
         {
-            _counter = 0;
-            foreach (char c in inputText)
+            int i = index * key;
+            if (i >= inputText.Length * (1 + block))
             {
-                if (Math.Floor((double)(inputText.IndexOf(c, counter) * key) / inputText.Length) > i)
-                {
-                    break;
-                }
-                outputArray[i + _counter * key] = c;
-                counter++;
-                _counter++;
+                block++;
+                indexInBlock = 0;
             }
+            posInOutputArr = block + key * indexInBlock;
+            outputArray[posInOutputArr] = c;
+            index++;
+            indexInBlock++;
         }
-        return outputText;
+        return new string(outputArray);
     }
 }

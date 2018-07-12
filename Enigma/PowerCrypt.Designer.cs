@@ -43,6 +43,7 @@
             this.CopyToClipboard = new System.Windows.Forms.Button();
             this.CustomParameter = new System.Windows.Forms.TextBox();
             this.TTCP = new System.Windows.Forms.ToolTip(this.components);
+            this.button1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // Input
@@ -61,12 +62,12 @@
             this.DropDown.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.DropDown.FormattingEnabled = true;
             this.DropDown.Items.AddRange(new object[] {
-            "Select encryption...", //0
-            "Caesar",               //1
-            "Rot",                  //2
-            "Rot13",                //3
-            "Vigenère",             //4
-            "Transposition"});      //5
+            "Select encryption...",
+            "Caesar",
+            "Rot",
+            "Rot13",
+            "Vigenère",
+            "Transposition"});
             this.DropDown.Location = new System.Drawing.Point(13, 396);
             this.DropDown.MaxDropDownItems = 3;
             this.DropDown.Name = "DropDown";
@@ -187,12 +188,23 @@
             // 
             this.TTCP.ToolTipTitle = "Custom parameter";
             // 
+            // button1
+            // 
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.Location = new System.Drawing.Point(155, 3);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(267, 38);
+            this.button1.TabIndex = 13;
+            this.button1.Text = "Dark/Light Theme";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
             // PowerCrypt
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
             this.AutoSize = true;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.ClientSize = new System.Drawing.Size(567, 517);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.CustomParameter);
             this.Controls.Add(this.CopyToClipboard);
             this.Controls.Add(this.Decrypt);
@@ -231,6 +243,7 @@
         private System.Windows.Forms.Button CopyToClipboard;
         private System.Windows.Forms.TextBox CustomParameter;
         private System.Windows.Forms.ToolTip TTCP;
+        private System.Windows.Forms.Button button1;
     }
 }
 
