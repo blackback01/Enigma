@@ -155,5 +155,12 @@ namespace Enigma
                 File.AppendAllText(saveFileDialog1.FileName, Text);
             }
         }
+
+        private void Theme_Click(object sender, EventArgs e)
+        {
+            YouWillJoinUs YWJU = new YouWillJoinUs();
+            YWJU.Show();
+
+        }
     }
 }

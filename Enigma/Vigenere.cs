@@ -18,7 +18,7 @@ namespace Enigma
 
         private StringBuilder encryption;
         private StringBuilder decryption;
-        private readonly char[] viginereAlphabet = "abcdefghijklmnopqrstuvwxyz0123456789?!,.:()' ".ToCharArray();
+        private readonly char[] viginereAlphabet = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789?!,.:()' ".ToCharArray();
         private double num;
         private bool isNum;
 
@@ -29,10 +29,12 @@ namespace Enigma
             string key = AdjustKeyLength(inputText, keyText);
             encryption = new StringBuilder();
 
-            inputText = inputText.ToLower();
+            //inputText = inputText.ToLower();
 
+            //Invailed key?
             isNum = double.TryParse(keyText, out num);
 
+            
             if (isNum) {
                 MessageBox.Show("Invailid Key, use only letters from a - z");
                 MessageBox.Show(viginereAlphabet.Length.ToString());
@@ -44,7 +46,7 @@ namespace Enigma
             //Encryption magic
             for (int i = 0; i < inputText.Length; i++)
             {
-                encryption.Append(viginereAlphabet[Modulo(Array.IndexOf(viginereAlphabet, inputText[i]) + Array.IndexOf(viginereAlphabet, key[i]),45)]);
+                encryption.Append(viginereAlphabet[Modulo(Array.IndexOf(viginereAlphabet, inputText[i]) + Array.IndexOf(viginereAlphabet, key[i]),71)]);
             }
 
             return encryption.ToString();
@@ -71,8 +73,9 @@ namespace Enigma
             string key = AdjustKeyLength(encryptedText, keyText);
             decryption = new StringBuilder();
 
-            encryptedText = encryptedText.ToLower();
+            //encryptedText = encryptedText.ToLower();
 
+            //Invailed Key
             isNum = double.TryParse(keyText, out num);
 
             if (isNum)
@@ -84,7 +87,7 @@ namespace Enigma
             //Decryption magic
             for (int i = 0; i < encryptedText.Length; i++)
             {
-                decryption.Append(viginereAlphabet[Modulo(Array.IndexOf(viginereAlphabet, encryptedText[i]) - Array.IndexOf(viginereAlphabet, key[i]),45)]);
+                decryption.Append(viginereAlphabet[Modulo(Array.IndexOf(viginereAlphabet, encryptedText[i]) - Array.IndexOf(viginereAlphabet, key[i]),71)]);
             }
 
             return decryption.ToString();

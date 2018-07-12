@@ -43,11 +43,13 @@
             this.CopyToClipboard = new System.Windows.Forms.Button();
             this.CustomParameter = new System.Windows.Forms.TextBox();
             this.TTCP = new System.Windows.Forms.ToolTip(this.components);
-            this.button1 = new System.Windows.Forms.Button();
+            this.Theme = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // Input
             // 
+            this.Input.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.Input.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.Input.Location = new System.Drawing.Point(13, 45);
             this.Input.Multiline = true;
             this.Input.Name = "Input";
@@ -58,8 +60,11 @@
             // 
             this.DropDown.AccessibleDescription = "";
             this.DropDown.AccessibleName = "";
+            this.DropDown.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.DropDown.Cursor = System.Windows.Forms.Cursors.Default;
             this.DropDown.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.DropDown.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.DropDown.ForeColor = System.Drawing.Color.White;
             this.DropDown.FormattingEnabled = true;
             this.DropDown.Items.AddRange(new object[] {
             "Select encryption...",
@@ -78,6 +83,8 @@
             // 
             // Output
             // 
+            this.Output.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.Output.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.Output.Location = new System.Drawing.Point(291, 45);
             this.Output.Multiline = true;
             this.Output.Name = "Output";
@@ -88,30 +95,36 @@
             // 
             // Start
             // 
+            this.Start.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.Start.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Start.Location = new System.Drawing.Point(12, 465);
+            this.Start.ForeColor = System.Drawing.Color.White;
+            this.Start.Location = new System.Drawing.Point(12, 466);
             this.Start.Name = "Start";
             this.Start.Size = new System.Drawing.Size(130, 48);
             this.Start.TabIndex = 3;
             this.Start.Text = "Start";
-            this.Start.UseVisualStyleBackColor = true;
+            this.Start.UseVisualStyleBackColor = false;
             this.Start.Click += new System.EventHandler(this.Start_Click);
             // 
             // Cancel
             // 
+            this.Cancel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.Cancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Cancel.Location = new System.Drawing.Point(155, 465);
+            this.Cancel.ForeColor = System.Drawing.Color.White;
+            this.Cancel.Location = new System.Drawing.Point(155, 466);
             this.Cancel.Name = "Cancel";
             this.Cancel.Size = new System.Drawing.Size(130, 48);
             this.Cancel.TabIndex = 4;
             this.Cancel.Text = "Cancel";
-            this.Cancel.UseVisualStyleBackColor = true;
+            this.Cancel.UseVisualStyleBackColor = false;
             this.Cancel.Click += new System.EventHandler(this.Cancel_Click);
             // 
             // EingabeLabel
             // 
             this.EingabeLabel.AutoSize = true;
+            this.EingabeLabel.BackColor = System.Drawing.Color.Transparent;
             this.EingabeLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.EingabeLabel.ForeColor = System.Drawing.Color.White;
             this.EingabeLabel.Location = new System.Drawing.Point(12, 3);
             this.EingabeLabel.Name = "EingabeLabel";
             this.EingabeLabel.Size = new System.Drawing.Size(88, 38);
@@ -121,7 +134,9 @@
             // AusgabeLabel
             // 
             this.AusgabeLabel.AutoSize = true;
+            this.AusgabeLabel.BackColor = System.Drawing.Color.Transparent;
             this.AusgabeLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.AusgabeLabel.ForeColor = System.Drawing.Color.White;
             this.AusgabeLabel.Location = new System.Drawing.Point(443, 4);
             this.AusgabeLabel.Name = "AusgabeLabel";
             this.AusgabeLabel.Size = new System.Drawing.Size(115, 38);
@@ -130,53 +145,63 @@
             // 
             // SaveToTextFile
             // 
+            this.SaveToTextFile.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.SaveToTextFile.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SaveToTextFile.ForeColor = System.Drawing.Color.White;
             this.SaveToTextFile.Location = new System.Drawing.Point(291, 426);
             this.SaveToTextFile.Name = "SaveToTextFile";
             this.SaveToTextFile.Size = new System.Drawing.Size(267, 34);
             this.SaveToTextFile.TabIndex = 7;
             this.SaveToTextFile.Text = "Save to TextFile";
-            this.SaveToTextFile.UseVisualStyleBackColor = true;
+            this.SaveToTextFile.UseVisualStyleBackColor = false;
             this.SaveToTextFile.Click += new System.EventHandler(this.SaveToTextFile_Click);
             // 
             // Encrypt
             // 
             this.Encrypt.AutoSize = true;
+            this.Encrypt.BackColor = System.Drawing.Color.Transparent;
             this.Encrypt.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Encrypt.ForeColor = System.Drawing.Color.White;
             this.Encrypt.Location = new System.Drawing.Point(291, 396);
             this.Encrypt.Name = "Encrypt";
             this.Encrypt.Size = new System.Drawing.Size(100, 29);
             this.Encrypt.TabIndex = 8;
             this.Encrypt.Text = "Encrypt";
-            this.Encrypt.UseVisualStyleBackColor = true;
+            this.Encrypt.UseVisualStyleBackColor = false;
             this.Encrypt.CheckedChanged += new System.EventHandler(this.Encrypt_CheckedChanged);
             // 
             // Decrypt
             // 
             this.Decrypt.AutoSize = true;
+            this.Decrypt.BackColor = System.Drawing.Color.Transparent;
             this.Decrypt.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Decrypt.ForeColor = System.Drawing.Color.White;
             this.Decrypt.Location = new System.Drawing.Point(457, 396);
             this.Decrypt.Name = "Decrypt";
             this.Decrypt.Size = new System.Drawing.Size(101, 29);
             this.Decrypt.TabIndex = 9;
             this.Decrypt.Text = "Decrypt";
-            this.Decrypt.UseVisualStyleBackColor = true;
+            this.Decrypt.UseVisualStyleBackColor = false;
             this.Decrypt.CheckedChanged += new System.EventHandler(this.Decrypt_CheckedChanged);
             // 
             // CopyToClipboard
             // 
+            this.CopyToClipboard.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.CopyToClipboard.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CopyToClipboard.ForeColor = System.Drawing.Color.White;
             this.CopyToClipboard.Location = new System.Drawing.Point(291, 466);
             this.CopyToClipboard.Name = "CopyToClipboard";
-            this.CopyToClipboard.Size = new System.Drawing.Size(267, 47);
+            this.CopyToClipboard.Size = new System.Drawing.Size(267, 48);
             this.CopyToClipboard.TabIndex = 10;
             this.CopyToClipboard.Text = "Copy to Clipboard";
-            this.CopyToClipboard.UseVisualStyleBackColor = true;
+            this.CopyToClipboard.UseVisualStyleBackColor = false;
             this.CopyToClipboard.Click += new System.EventHandler(this.CopyToClipboard_Click);
             // 
             // CustomParameter
             // 
+            this.CustomParameter.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.CustomParameter.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CustomParameter.ForeColor = System.Drawing.Color.White;
             this.CustomParameter.Location = new System.Drawing.Point(12, 426);
             this.CustomParameter.Name = "CustomParameter";
             this.CustomParameter.ReadOnly = true;
@@ -188,23 +213,31 @@
             // 
             this.TTCP.ToolTipTitle = "Custom parameter";
             // 
-            // button1
+            // Theme
             // 
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(155, 3);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(267, 38);
-            this.button1.TabIndex = 13;
-            this.button1.Text = "Dark/Light Theme";
-            this.button1.UseVisualStyleBackColor = true;
+            this.Theme.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.Theme.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.Theme.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
+            this.Theme.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Black;
+            this.Theme.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.Theme.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Theme.ForeColor = System.Drawing.Color.White;
+            this.Theme.Location = new System.Drawing.Point(155, 3);
+            this.Theme.Name = "Theme";
+            this.Theme.Size = new System.Drawing.Size(267, 38);
+            this.Theme.TabIndex = 13;
+            this.Theme.Text = "Dark/Light Theme";
+            this.Theme.UseVisualStyleBackColor = false;
+            this.Theme.Click += new System.EventHandler(this.Theme_Click);
             // 
             // PowerCrypt
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
             this.AutoSize = true;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.ClientSize = new System.Drawing.Size(567, 517);
-            this.Controls.Add(this.button1);
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(43)))), ((int)(((byte)(43)))));
+            this.ClientSize = new System.Drawing.Size(567, 520);
+            this.Controls.Add(this.Theme);
             this.Controls.Add(this.CustomParameter);
             this.Controls.Add(this.CopyToClipboard);
             this.Controls.Add(this.Decrypt);
@@ -243,7 +276,7 @@
         private System.Windows.Forms.Button CopyToClipboard;
         private System.Windows.Forms.TextBox CustomParameter;
         private System.Windows.Forms.ToolTip TTCP;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button Theme;
     }
 }
 
