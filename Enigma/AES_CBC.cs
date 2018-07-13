@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.IO;
 using System.Security.Cryptography;
+using System.Drawing;
 
 namespace Enigma
 {
@@ -12,9 +13,12 @@ namespace Enigma
     class AES_CBC
     {
         private AesCryptoServiceProvider cryptoServiceProvider;
+        private Image img = Image.FromFile("H:/C28E/Programmieren 3.5/Jonas Sobotta/Enigma/Enigma/image.png");
+
+
 
         //Constructor
-        public AES_CBC()
+        /*public AES_CBC()
         {
             cryptoServiceProvider = new AesCryptoServiceProvider();
 
@@ -42,13 +46,18 @@ namespace Enigma
             return str;
         }
 
-        public byte EncryptImage (byte[] inputImage)
+        public string EncryptImage ()
         {
             ICryptoTransform cryptoTransform = cryptoServiceProvider.CreateEncryptor();
 
-            byte[] encryptedImage = cryptoTransform.TransformFinalBlock(ASCIIEncoding.ASCII.GetBytes(inputImage, 0, inputImage.Length));
+            
 
-            return encryptedImage;
+            byte[] encrypted_bytes = cryptoTransform.TransformFinalBlock(ASCIIEncoding.ASCII.GetBytes(img.ToString()), 0, img.ToString().Length);
+            FileStream fs = File.OpenWrite();
+            fs.Close();
+
+            string str = Convert.ToBase64String(encrypted_bytes);
+            return str;
         }
 
         //Decryption Function, decrypts text
@@ -67,15 +76,13 @@ namespace Enigma
             return str;
         }
 
-        public byte DecryptImage(byte[] encryptedImage)
+        /*public byte[] DecryptImage(string encryptedImage)
         {
             ICryptoTransform cryptoTransform = cryptoServiceProvider.CreateDecryptor();
-
-            byte[] encryptedBytes = Convert.FromBase64String(encryptedImage);
 
             byte[] decryptedBytes = cryptoTransform.TransformFinalBlock(encryptedImage, 0, encryptedImage.Length);
 
             return decryptedBytes;
-        }
+        }*/
     }
 }

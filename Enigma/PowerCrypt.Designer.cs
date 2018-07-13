@@ -69,7 +69,8 @@
             "Vigenère",
             "Transposition",
             "AES_CBC",
-            "PaulCryption"});
+            "PaulCryption",
+            "test"});
             this.DropDown.Location = new System.Drawing.Point(12, 395);
             this.DropDown.MaxDropDownItems = 3;
             this.DropDown.Name = "DropDown";
@@ -250,9 +251,11 @@
             // 
             // InputPic
             // 
+            this.InputPic.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.InputPic.Location = new System.Drawing.Point(19, 44);
             this.InputPic.Name = "InputPic";
             this.InputPic.Size = new System.Drawing.Size(283, 345);
+            this.InputPic.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.InputPic.TabIndex = 17;
             this.InputPic.TabStop = false;
             this.InputPic.Visible = false;
@@ -262,6 +265,7 @@
             this.OutputPic.Location = new System.Drawing.Point(308, 44);
             this.OutputPic.Name = "OutputPic";
             this.OutputPic.Size = new System.Drawing.Size(283, 345);
+            this.OutputPic.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.OutputPic.TabIndex = 18;
             this.OutputPic.TabStop = false;
             this.OutputPic.Visible = false;

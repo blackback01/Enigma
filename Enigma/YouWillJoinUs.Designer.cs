@@ -38,7 +38,7 @@
             // 
             this.Join.BackColor = System.Drawing.Color.Black;
             this.Join.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.Join.Font = new System.Drawing.Font("Agency FB", 28.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Join.Font = new System.Drawing.Font("Agency FB", 25.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Join.ForeColor = System.Drawing.Color.White;
             this.Join.Location = new System.Drawing.Point(0, 711);
             this.Join.Name = "Join";

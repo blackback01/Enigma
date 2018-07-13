@@ -13,7 +13,7 @@ namespace Enigma
 {
     public partial class YouWillJoinUs : Form
     {
-        string directory;
+        //string directory;
         System.Media.SoundPlayer ImperialMarch = new System.Media.SoundPlayer(@"H:\C28E\Programmieren 3.5\Joshua Hertling\Enigma\Enigma\bin\Debug\ImperialMarch.wav");
         public YouWillJoinUs()
         {
@@ -21,12 +21,10 @@ namespace Enigma
             ImperialMarch.Play();
             InitializeComponent();
         }
-
         private void Join_Click(object sender, EventArgs e)
         {
             this.Close();
             ImperialMarch.Stop(); 
-             
         }
     }
 }

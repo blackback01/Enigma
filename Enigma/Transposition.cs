@@ -3,12 +3,11 @@
 public class Transposition
 {
     int key;
-    string alphabet = "abcdefghijklmnopqrstuvwxyz";
 	public Transposition(int _key)
 	{
         key = _key;
 	}
-
+    //Encrypt
     public string Encrypt(string inputText)
     {
         int charCounter;
@@ -27,21 +26,15 @@ public class Transposition
         }
         return outputText;
     }
-
+    //Decrypt
     public string Decrypt(string inputText)
     {
         int index = 0;
-
         int block = 0;
-
         int indexInBlock = 0;
-
         int posInOutputArr = 0;
-
         string outputText = new string('_', inputText.Length);
-
         char[] outputArray = new char[inputText.Length];
-
         foreach (char c in inputText)
         {
             int i = index * key;
