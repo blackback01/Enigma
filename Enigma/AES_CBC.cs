@@ -6,19 +6,16 @@ using System.IO;
 using System.Security.Cryptography;
 using System.Drawing;
 
-namespace Enigma
+namespace PowerCrypt
 {
 
     //AES-CBC encryption class by jonas
     class AES_CBC
     {
         private AesCryptoServiceProvider cryptoServiceProvider;
-        private Image img = Image.FromFile("H:/C28E/Programmieren 3.5/Jonas Sobotta/Enigma/Enigma/image.png");
-
-
 
         //Constructor
-        /*public AES_CBC()
+        public AES_CBC()
         {
             cryptoServiceProvider = new AesCryptoServiceProvider();
 
@@ -46,20 +43,6 @@ namespace Enigma
             return str;
         }
 
-        public string EncryptImage ()
-        {
-            ICryptoTransform cryptoTransform = cryptoServiceProvider.CreateEncryptor();
-
-            
-
-            byte[] encrypted_bytes = cryptoTransform.TransformFinalBlock(ASCIIEncoding.ASCII.GetBytes(img.ToString()), 0, img.ToString().Length);
-            FileStream fs = File.OpenWrite();
-            fs.Close();
-
-            string str = Convert.ToBase64String(encrypted_bytes);
-            return str;
-        }
-
         //Decryption Function, decrypts text
         //Takes inputText as parameter
         public string Decrypt(string encryptedText)
@@ -75,14 +58,5 @@ namespace Enigma
 
             return str;
         }
-
-        /*public byte[] DecryptImage(string encryptedImage)
-        {
-            ICryptoTransform cryptoTransform = cryptoServiceProvider.CreateDecryptor();
-
-            byte[] decryptedBytes = cryptoTransform.TransformFinalBlock(encryptedImage, 0, encryptedImage.Length);
-
-            return decryptedBytes;
-        }*/
     }
 }

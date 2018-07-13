@@ -1,4 +1,4 @@
-﻿namespace Enigma
+﻿namespace PowerCrypt
 {
     partial class YouWillJoinUs
     {
