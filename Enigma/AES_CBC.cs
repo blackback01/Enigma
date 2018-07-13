@@ -42,6 +42,15 @@ namespace Enigma
             return str;
         }
 
+        public byte EncryptImage (byte[] inputImage)
+        {
+            ICryptoTransform cryptoTransform = cryptoServiceProvider.CreateEncryptor();
+
+            byte[] encryptedImage = cryptoTransform.TransformFinalBlock(ASCIIEncoding.ASCII.GetBytes(inputImage, 0, inputImage.Length));
+
+            return encryptedImage;
+        }
+
         //Decryption Function, decrypts text
         //Takes inputText as parameter
         public string Decrypt(string encryptedText)
@@ -56,6 +65,17 @@ namespace Enigma
             string str = ASCIIEncoding.ASCII.GetString(decryptedBytes);
 
             return str;
+        }
+
+        public byte DecryptImage(byte[] encryptedImage)
+        {
+            ICryptoTransform cryptoTransform = cryptoServiceProvider.CreateDecryptor();
+
+            byte[] encryptedBytes = Convert.FromBase64String(encryptedImage);
+
+            byte[] decryptedBytes = cryptoTransform.TransformFinalBlock(encryptedImage, 0, encryptedImage.Length);
+
+            return decryptedBytes;
         }
     }
 }

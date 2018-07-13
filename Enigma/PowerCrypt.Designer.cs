@@ -30,9 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PowerCrypt));
-            this.Input = new System.Windows.Forms.TextBox();
             this.DropDown = new System.Windows.Forms.ComboBox();
-            this.Output = new System.Windows.Forms.TextBox();
             this.Start = new System.Windows.Forms.Button();
             this.Cancel = new System.Windows.Forms.Button();
             this.EingabeLabel = new System.Windows.Forms.Label();
@@ -45,21 +43,13 @@
             this.TTCP = new System.Windows.Forms.ToolTip(this.components);
             this.Theme = new System.Windows.Forms.Button();
             this.FileInput = new System.Windows.Forms.Button();
-            this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
+            this.Input = new System.Windows.Forms.RichTextBox();
+            this.Output = new System.Windows.Forms.RichTextBox();
+            this.InputPic = new System.Windows.Forms.PictureBox();
+            this.OutputPic = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.InputPic)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.OutputPic)).BeginInit();
             this.SuspendLayout();
-            // 
-            // Input
-            // 
-            this.Input.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.Input.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.Input.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Input.ForeColor = System.Drawing.Color.Fuchsia;
-            this.Input.Location = new System.Drawing.Point(12, 44);
-            this.Input.Multiline = true;
-            this.Input.Name = "Input";
-            this.Input.Size = new System.Drawing.Size(290, 345);
-            this.Input.TabIndex = 0;
-            this.Input.TextChanged += new System.EventHandler(this.Input_TextChanged);
             // 
             // DropDown
             // 
@@ -78,7 +68,8 @@
             "Rot13",
             "Vigenère",
             "Transposition",
-            "AES_CBC"});
+            "AES_CBC",
+            "PaulCryption"});
             this.DropDown.Location = new System.Drawing.Point(12, 395);
             this.DropDown.MaxDropDownItems = 3;
             this.DropDown.Name = "DropDown";
@@ -86,20 +77,6 @@
             this.DropDown.TabIndex = 1;
             this.DropDown.Tag = "";
             this.DropDown.SelectedIndexChanged += new System.EventHandler(this.DropDown_SelectedIndexChanged);
-            // 
-            // Output
-            // 
-            this.Output.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.Output.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.Output.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Output.ForeColor = System.Drawing.Color.Fuchsia;
-            this.Output.Location = new System.Drawing.Point(308, 45);
-            this.Output.Multiline = true;
-            this.Output.Name = "Output";
-            this.Output.ReadOnly = true;
-            this.Output.Size = new System.Drawing.Size(276, 344);
-            this.Output.TabIndex = 2;
-            this.Output.TextChanged += new System.EventHandler(this.Output_TextChanged);
             // 
             // Start
             // 
@@ -216,7 +193,6 @@
             this.CustomParameter.Size = new System.Drawing.Size(143, 34);
             this.CustomParameter.TabIndex = 12;
             this.TTCP.SetToolTip(this.CustomParameter, " ");
-            this.CustomParameter.TextChanged += new System.EventHandler(this.CustomParameter_TextChanged);
             // 
             // TTCP
             // 
@@ -248,9 +224,47 @@
             this.FileInput.Name = "FileInput";
             this.FileInput.Size = new System.Drawing.Size(141, 34);
             this.FileInput.TabIndex = 14;
-            this.FileInput.Text = "Files In";
+            this.FileInput.Text = "Load Files";
             this.FileInput.UseVisualStyleBackColor = false;
             this.FileInput.Click += new System.EventHandler(this.FileInput_Click);
+            // 
+            // Input
+            // 
+            this.Input.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.Input.ForeColor = System.Drawing.Color.Magenta;
+            this.Input.Location = new System.Drawing.Point(19, 44);
+            this.Input.Name = "Input";
+            this.Input.Size = new System.Drawing.Size(283, 345);
+            this.Input.TabIndex = 15;
+            this.Input.Text = "";
+            // 
+            // Output
+            // 
+            this.Output.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.Output.ForeColor = System.Drawing.Color.Magenta;
+            this.Output.Location = new System.Drawing.Point(308, 44);
+            this.Output.Name = "Output";
+            this.Output.Size = new System.Drawing.Size(283, 345);
+            this.Output.TabIndex = 16;
+            this.Output.Text = "";
+            // 
+            // InputPic
+            // 
+            this.InputPic.Location = new System.Drawing.Point(19, 44);
+            this.InputPic.Name = "InputPic";
+            this.InputPic.Size = new System.Drawing.Size(283, 345);
+            this.InputPic.TabIndex = 17;
+            this.InputPic.TabStop = false;
+            this.InputPic.Visible = false;
+            // 
+            // OutputPic
+            // 
+            this.OutputPic.Location = new System.Drawing.Point(308, 44);
+            this.OutputPic.Name = "OutputPic";
+            this.OutputPic.Size = new System.Drawing.Size(283, 345);
+            this.OutputPic.TabIndex = 18;
+            this.OutputPic.TabStop = false;
+            this.OutputPic.Visible = false;
             // 
             // PowerCrypt
             // 
@@ -259,6 +273,10 @@
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(43)))), ((int)(((byte)(43)))));
             this.ClientSize = new System.Drawing.Size(596, 520);
+            this.Controls.Add(this.OutputPic);
+            this.Controls.Add(this.InputPic);
+            this.Controls.Add(this.Output);
+            this.Controls.Add(this.Input);
             this.Controls.Add(this.FileInput);
             this.Controls.Add(this.Theme);
             this.Controls.Add(this.CustomParameter);
@@ -270,25 +288,22 @@
             this.Controls.Add(this.EingabeLabel);
             this.Controls.Add(this.Cancel);
             this.Controls.Add(this.Start);
-            this.Controls.Add(this.Output);
             this.Controls.Add(this.DropDown);
-            this.Controls.Add(this.Input);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "PowerCrypt";
             this.Text = "PowerCrypt";
             this.TransparencyKey = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            ((System.ComponentModel.ISupportInitialize)(this.InputPic)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.OutputPic)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.TextBox Input;
         private System.Windows.Forms.ComboBox DropDown;
-        private System.Windows.Forms.TextBox Output;
         private System.Windows.Forms.Button Start;
         private System.Windows.Forms.Button Cancel;
         private System.Windows.Forms.Label EingabeLabel;
@@ -301,7 +316,10 @@
         private System.Windows.Forms.ToolTip TTCP;
         private System.Windows.Forms.Button Theme;
         private System.Windows.Forms.Button FileInput;
-        private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog1;
+        private System.Windows.Forms.RichTextBox Input;
+        private System.Windows.Forms.RichTextBox Output;
+        private System.Windows.Forms.PictureBox InputPic;
+        private System.Windows.Forms.PictureBox OutputPic;
     }
 }
 
