@@ -1,4 +1,4 @@
-﻿namespace Enigma
+﻿namespace PowerCrypt
 {
     partial class PowerCrypt
     {
@@ -69,8 +69,7 @@
             "Vigenère",
             "Transposition",
             "AES_CBC",
-            "PaulCryption",
-            "test"});
+            "PaulCryption"});
             this.DropDown.Location = new System.Drawing.Point(12, 395);
             this.DropDown.MaxDropDownItems = 3;
             this.DropDown.Name = "DropDown";

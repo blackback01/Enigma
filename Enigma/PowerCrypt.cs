@@ -9,20 +9,20 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
 
-namespace Enigma
+namespace PowerCrypt
 {
     public partial class PowerCrypt : Form
     {
         #region Declarations
-        string fextension;
-        SaveFileDialog saveFileDialog1;
-        OpenFileDialog ofd;
-        Substitution Sub;
-        Substitution activeSub;
-        Viginere v;
-        Transposition t;
-        AES_CBC aes;
-        PaulCryption pc;
+        private string fextension;
+        private SaveFileDialog saveFileDialog1;
+        private OpenFileDialog ofd = new OpenFileDialog();
+        private Substitution Sub = new Substitution();
+        private Substitution activeSub;
+        private Viginere v = new Viginere();
+        private Transposition t;
+        private AES_CBC aes = new AES_CBC();
+        private PaulCryption pc = new PaulCryption();
         #endregion
         public PowerCrypt()
         {
@@ -73,17 +73,11 @@ namespace Enigma
         //File Input
         private void FileInput_Click(object sender, EventArgs e)
         {
-            if (ofd.ShowDialog() == DialogResult.OK)
+            ofd.Filter = ("TextFiles (*.txt,*.pdf,*.rtf,*.bat)|*.txt;*.pdf;*.rtf,*.bat");
+            if (this.ofd.ShowDialog() == DialogResult.OK)
             {
                 string fname = ofd.FileName;
-                fextension = Path.GetExtension(ofd.FileName);
-                if(fextension == ".txt" || fextension == ".pdf" || fextension == ".rtf")
-                    Input.Text = System.IO.File.ReadAllText(fname);
-                else if(fextension == ".png" || fextension == ".jpeg" || fextension == ".jpg")
-                {
-                    InputPic.Visible = true;
-                    InputPic.Image = Image.FromFile(ofd.FileName);
-                }
+                Input.Text = System.IO.File.ReadAllText(fname);
             }
         }
         //Start Encrypt & DecryptS
@@ -144,27 +138,14 @@ namespace Enigma
             }
             #endregion
             #region AES Encrypt & Decrypt
-            /*if (DropDown.SelectedIndex == 6 && Encrypt.Checked == true)
+            if (DropDown.SelectedIndex == 6 && Encrypt.Checked == true)
             {
-                if (fextension == ".txt" || fextension == ".pdf" || fextension == ".rtf")
-                    Output.Text = aes.Encrypt(Input.Text); 
-                else if (fextension == ".png" || fextension == ".jpeg" || fextension == ".jpg")
-                {
-                    OutputPic.Visible = true;
-                    OutputPic.Image = aes.EncryptImage();
-                }
-                
+                Output.Text = aes.Encrypt(Input.Text);
             }
             if (DropDown.SelectedIndex == 6 && Decrypt.Checked == true)
             {
-                if (fextension == ".txt" || fextension == ".pdf" || fextension == ".rtf")
-                    Output.Text = aes.Decrypt(Input.Text);
-                else if (fextension == ".png" || fextension == ".jpeg" || fextension == ".jpg")
-                {
-                    OutputPic.Visible = true;
-                    OutputPic.Image = aes.Decrypt(InputPic.Image);
-                }
-            }*/
+                Output.Text = aes.Decrypt(Input.Text);
+            }
             #endregion
             #region PaulCryption Encrypt & Decrypt
             if (DropDown.SelectedIndex == 7 && Encrypt.Checked == true)
@@ -174,28 +155,6 @@ namespace Enigma
             if (DropDown.SelectedIndex == 7 && Decrypt.Checked == true)
             {
                 Output.Text = pc.Decrypt(Input.Text, Convert.ToInt32(CustomParameter.Text));
-            }
-            #endregion
-            #region test
-            if (DropDown.SelectedIndex == 8 && Encrypt.Checked == true)
-            {
-                if (fextension == ".txt" || fextension == ".pdf" || fextension == ".rtf")
-                    Output.Text = activeSub.Encrypt(Input.Text);
-                else if (fextension == ".png" || fextension == ".jpeg" || fextension == ".jpg")
-                {
-                    OutputPic.Visible = true;
-                    OutputPic.Image = InputPic.Image;
-                }
-                
-            } else if (DropDown.SelectedIndex == 8 && Decrypt.Checked == true)
-            {
-                if (fextension == ".txt" || fextension == ".pdf" || fextension == ".rtf")
-                    Output.Text = activeSub.Decrypt(Input.Text);
-                else if (fextension == ".png" || fextension == ".jpeg" || fextension == ".jpg")
-                {
-                    OutputPic.Visible = true;
-                    OutputPic.Image = InputPic.Image;
-                }
             }
             #endregion
         }

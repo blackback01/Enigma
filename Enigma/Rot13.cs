@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Enigma
+namespace PowerCrypt
 {
     public class Rot13 : Substitution
     {
