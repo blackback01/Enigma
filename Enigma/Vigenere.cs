@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Windows.Forms;
 
 namespace Enigma
 {
@@ -17,7 +18,9 @@ namespace Enigma
 
         private StringBuilder encryption;
         private StringBuilder decryption;
-        private char[] viginereAlphabet = "abcdefghijklmnopqrstuvwxyz".ToCharArray();
+        private readonly char[] viginereAlphabet = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789?!,.:()' ".ToCharArray();
+        private double num;
+        private bool isNum;
 
         //Encryption method
         public string Encrypt(string inputText, string keyText)
@@ -26,32 +29,24 @@ namespace Enigma
             string key = AdjustKeyLength(inputText, keyText);
             encryption = new StringBuilder();
 
-            inputText = inputText.Replace(" ", "");
-            inputText = inputText.Replace("!", "");
-            inputText = inputText.Replace("?", "");
-            inputText = inputText.Replace(".", "");
-            inputText = inputText.Replace("-", "");
-            inputText = inputText.Replace("(", "");
-            inputText = inputText.Replace(")", "");
-            inputText = inputText.Replace(":", "");
-            inputText = inputText.Replace("[", "");
-            inputText = inputText.Replace("]", "");
-            inputText = inputText.Replace("0", "");
-            inputText = inputText.Replace("1", "");
-            inputText = inputText.Replace("2", "");
-            inputText = inputText.Replace("3", "");
-            inputText = inputText.Replace("4", "");
-            inputText = inputText.Replace("5", "");
-            inputText = inputText.Replace("6", "");
-            inputText = inputText.Replace("7", "");
-            inputText = inputText.Replace("8", "");
-            inputText = inputText.Replace("9", "");
-            keyText = keyText.Replace(" ", "");
+            //inputText = inputText.ToLower();
+
+            //Invailed key?
+            isNum = double.TryParse(keyText, out num);
+
+            
+            if (isNum) {
+                MessageBox.Show("Invailid Key, use only letters from a - z");
+                MessageBox.Show(viginereAlphabet.Length.ToString());
+                return null;
+            }
+
+            
 
             //Encryption magic
             for (int i = 0; i < inputText.Length; i++)
             {
-                encryption.Append(viginereAlphabet[Modulo(Array.IndexOf(viginereAlphabet, inputText[i]) + Array.IndexOf(viginereAlphabet, key[i]), 26)]);
+                encryption.Append(viginereAlphabet[Modulo(Array.IndexOf(viginereAlphabet, inputText[i]) + Array.IndexOf(viginereAlphabet, key[i]),71)]);
             }
 
             return encryption.ToString();
@@ -78,16 +73,28 @@ namespace Enigma
             string key = AdjustKeyLength(encryptedText, keyText);
             decryption = new StringBuilder();
 
-            encryptedText = encryptedText.Replace(" ", "");
-            keyText = keyText.Replace(" ", "");
+            //encryptedText = encryptedText.ToLower();
+
+            //Invailed Key
+            isNum = double.TryParse(keyText, out num);
+
+            if (isNum)
+            {
+                MessageBox.Show("Invailid Key, use only letters from a - z");
+                return null;
+            }
 
             //Decryption magic
             for (int i = 0; i < encryptedText.Length; i++)
             {
-                decryption.Append(viginereAlphabet[Modulo(Array.IndexOf(viginereAlphabet, encryptedText[i]) - Array.IndexOf(viginereAlphabet, key[i]), 26)]);
+                decryption.Append(viginereAlphabet[Modulo(Array.IndexOf(viginereAlphabet, encryptedText[i]) - Array.IndexOf(viginereAlphabet, key[i]),71)]);
             }
 
             return decryption.ToString();
+
+            /*
+             hello hi i am so cool and say me fucking program why dont you work like i want you to work i am so angry at you fuck it all fuck it all i dont give a shit anymore 1234567890
+             */
         }
 
         //Modulo Method

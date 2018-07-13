@@ -18,6 +18,8 @@ namespace Enigma
         Substitution activeSub = new Caesar();
         Viginere v = new Viginere();
         Transposition t;
+        AES_CBC aes = new AES_CBC();
+        PaulCryption PC = new PaulCryption();
 
         public PowerCrypt()
         {
@@ -57,17 +59,17 @@ namespace Enigma
 
         private void DropDown_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (DropDown.SelectedIndex == 2 || DropDown.SelectedIndex == 4 || DropDown.SelectedIndex == 5)
+            if (DropDown.SelectedIndex == 2 || DropDown.SelectedIndex == 4 || DropDown.SelectedIndex == 5 || DropDown.SelectedIndex == 7)
             {
                 CustomParameter.ReadOnly = false;
             }
-            else if (DropDown.SelectedIndex != 2 || DropDown.SelectedIndex != 4)
+            else if (DropDown.SelectedIndex != 2 || DropDown.SelectedIndex != 4 || DropDown.SelectedIndex != 5 || DropDown.SelectedIndex != 7)
             {
                 CustomParameter.ReadOnly = true;
                 CustomParameter.Text = "";
             }
         }
-
+        //Start Encrypt & DecryptS
         private void Start_Click(object sender, EventArgs e)
         {
             #region  Caesar Encrypt & Decrypt
@@ -116,15 +118,36 @@ namespace Enigma
             if (DropDown.SelectedIndex == 5 && Encrypt.Checked == true)
             {
                 t = new Transposition(Convert.ToInt32(CustomParameter.Text));
-                Output.Text = activeSub.Encrypt(Input.Text);
+                Output.Text =t.Encrypt(Input.Text);
             }
             if (DropDown.SelectedIndex == 5 && Decrypt.Checked == true)
             {
                 t = new Transposition(Convert.ToInt32(CustomParameter.Text));
-                Output.Text = activeSub.Decrypt(Input.Text);
+                Output.Text = t.Decrypt(Input.Text);
+            }
+            #endregion
+            #region AES Encrypt & Decrypt
+            if (DropDown.SelectedIndex == 6 && Encrypt.Checked == true)
+            {
+                Output.Text = aes.Encrypt(Input.Text);
+            }
+            if (DropDown.SelectedIndex == 6 && Decrypt.Checked == true)
+            {
+                Output.Text = aes.Decrypt(Input.Text);
+            }
+            #endregion
+            #region PaulCryption Encrypt & Decrypt
+            if (DropDown.SelectedIndex == 7 && Encrypt.Checked == true)
+            {
+                Output.Text = PC.Encrypt(Input.Text, Convert.ToInt32(CustomParameter.Text));
+            }
+            if (DropDown.SelectedIndex == 7 && Decrypt.Checked == true)
+            {
+                Output.Text = PC.Decrypt(Input.Text, Convert.ToInt32(CustomParameter.Text));
             }
             #endregion
         }
+        //Copy to Clipboard
         private void CopyToClipboard_Click(object sender, EventArgs e)
         {
             if (Output.Text != "")
@@ -136,7 +159,7 @@ namespace Enigma
 
             }
         }
-
+        //Save to TextFile
         private void SaveToTextFile_Click(object sender, EventArgs e)
         {
             SaveFileDialog saveFileDialog1 = new SaveFileDialog();
@@ -153,6 +176,24 @@ namespace Enigma
                 File.Delete(saveFileDialog1.FileName);
                 string Text = Output.Text + Environment.NewLine;
                 File.AppendAllText(saveFileDialog1.FileName, Text);
+            }
+        }
+        //Theme Change
+        private void Theme_Click(object sender, EventArgs e)
+        {
+            YouWillJoinUs YWJU = new YouWillJoinUs();
+            YWJU.Show();
+
+        }
+        //File Input
+        private void FileInput_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog ofd = new OpenFileDialog();
+            if (ofd.ShowDialog() == DialogResult.OK)
+            {
+                string fname = ofd.FileName;
+                Input.Text = System.IO.File.ReadAllText(fname);
+
             }
         }
     }

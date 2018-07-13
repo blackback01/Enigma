@@ -46,7 +46,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AES_CBC.cs" />
     <Compile Include="Caesar.cs" />
+    <Compile Include="PaulCryption.cs" />
     <Compile Include="PowerCrypt.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -60,6 +62,12 @@
     <Compile Include="Substitution.cs" />
     <Compile Include="Transposition.cs" />
     <Compile Include="Vigenere.cs" />
+    <Compile Include="YouWillJoinUs.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="YouWillJoinUs.Designer.cs">
+      <DependentUpon>YouWillJoinUs.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="PowerCrypt.resx">
       <DependentUpon>PowerCrypt.cs</DependentUpon>
     </EmbeddedResource>
@@ -72,6 +80,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="YouWillJoinUs.resx">
+      <DependentUpon>YouWillJoinUs.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
