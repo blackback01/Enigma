@@ -13,31 +13,32 @@ namespace Enigma
 {
     public partial class PowerCrypt : Form
     {
-
-        Substitution Sub = new Substitution();
-        Substitution activeSub = new Caesar();
-        Viginere v = new Viginere();
+        #region Declarations
+        string fextension;
+        SaveFileDialog saveFileDialog1;
+        OpenFileDialog ofd;
+        Substitution Sub;
+        Substitution activeSub;
+        Viginere v;
         Transposition t;
-        AES_CBC aes = new AES_CBC();
-        PaulCryption PC = new PaulCryption();
-
+        AES_CBC aes;
+        PaulCryption pc;
+        #endregion
         public PowerCrypt()
         {
             InitializeComponent();
             DropDown.SelectedIndex = 0;
         }
-
-        private void Output_TextChanged(object sender, EventArgs e)
-        {
-
-        }
+        //Cancel Button
         private void Cancel_Click(object sender, EventArgs e)
         {
             Input.Text = "";
             Output.Text = "";
+            InputPic.Visible = false;
+            OutputPic.Visible = false;
             DropDown.SelectedIndex = 0;
         }
-
+        //Encrypt Checkbox
         private void Encrypt_CheckedChanged(object sender, EventArgs e)
         {
             if (Encrypt.Checked == true)
@@ -46,7 +47,7 @@ namespace Enigma
                 Decrypt.Checked = false;
             }
         }
-
+        //Decrypt Checkbox
         private void Decrypt_CheckedChanged(object sender, EventArgs e)
         {
             if (Decrypt.Checked == true)
@@ -56,7 +57,7 @@ namespace Enigma
             }
 
         }
-
+        //Dropdown Menu
         private void DropDown_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (DropDown.SelectedIndex == 2 || DropDown.SelectedIndex == 4 || DropDown.SelectedIndex == 5 || DropDown.SelectedIndex == 7)
@@ -67,6 +68,22 @@ namespace Enigma
             {
                 CustomParameter.ReadOnly = true;
                 CustomParameter.Text = "";
+            }
+        } 
+        //File Input
+        private void FileInput_Click(object sender, EventArgs e)
+        {
+            if (ofd.ShowDialog() == DialogResult.OK)
+            {
+                string fname = ofd.FileName;
+                fextension = Path.GetExtension(ofd.FileName);
+                if(fextension == ".txt" || fextension == ".pdf" || fextension == ".rtf")
+                    Input.Text = System.IO.File.ReadAllText(fname);
+                else if(fextension == ".png" || fextension == ".jpeg" || fextension == ".jpg")
+                {
+                    InputPic.Visible = true;
+                    InputPic.Image = Image.FromFile(ofd.FileName);
+                }
             }
         }
         //Start Encrypt & DecryptS
@@ -127,23 +144,58 @@ namespace Enigma
             }
             #endregion
             #region AES Encrypt & Decrypt
-            if (DropDown.SelectedIndex == 6 && Encrypt.Checked == true)
+            /*if (DropDown.SelectedIndex == 6 && Encrypt.Checked == true)
             {
-                Output.Text = aes.Encrypt(Input.Text);
+                if (fextension == ".txt" || fextension == ".pdf" || fextension == ".rtf")
+                    Output.Text = aes.Encrypt(Input.Text); 
+                else if (fextension == ".png" || fextension == ".jpeg" || fextension == ".jpg")
+                {
+                    OutputPic.Visible = true;
+                    OutputPic.Image = aes.EncryptImage();
+                }
+                
             }
             if (DropDown.SelectedIndex == 6 && Decrypt.Checked == true)
             {
-                Output.Text = aes.Decrypt(Input.Text);
-            }
+                if (fextension == ".txt" || fextension == ".pdf" || fextension == ".rtf")
+                    Output.Text = aes.Decrypt(Input.Text);
+                else if (fextension == ".png" || fextension == ".jpeg" || fextension == ".jpg")
+                {
+                    OutputPic.Visible = true;
+                    OutputPic.Image = aes.Decrypt(InputPic.Image);
+                }
+            }*/
             #endregion
             #region PaulCryption Encrypt & Decrypt
             if (DropDown.SelectedIndex == 7 && Encrypt.Checked == true)
             {
-                Output.Text = PC.Encrypt(Input.Text, Convert.ToInt32(CustomParameter.Text));
+                Output.Text = pc.Encrypt(Input.Text, Convert.ToInt32(CustomParameter.Text));
             }
             if (DropDown.SelectedIndex == 7 && Decrypt.Checked == true)
             {
-                Output.Text = PC.Decrypt(Input.Text, Convert.ToInt32(CustomParameter.Text));
+                Output.Text = pc.Decrypt(Input.Text, Convert.ToInt32(CustomParameter.Text));
+            }
+            #endregion
+            #region test
+            if (DropDown.SelectedIndex == 8 && Encrypt.Checked == true)
+            {
+                if (fextension == ".txt" || fextension == ".pdf" || fextension == ".rtf")
+                    Output.Text = activeSub.Encrypt(Input.Text);
+                else if (fextension == ".png" || fextension == ".jpeg" || fextension == ".jpg")
+                {
+                    OutputPic.Visible = true;
+                    OutputPic.Image = InputPic.Image;
+                }
+                
+            } else if (DropDown.SelectedIndex == 8 && Decrypt.Checked == true)
+            {
+                if (fextension == ".txt" || fextension == ".pdf" || fextension == ".rtf")
+                    Output.Text = activeSub.Decrypt(Input.Text);
+                else if (fextension == ".png" || fextension == ".jpeg" || fextension == ".jpg")
+                {
+                    OutputPic.Visible = true;
+                    OutputPic.Image = InputPic.Image;
+                }
             }
             #endregion
         }
@@ -154,17 +206,15 @@ namespace Enigma
             {
                 Clipboard.SetText(Output.Text);
             }
-            else
-            {
-
-            }
         }
         //Save to TextFile
         private void SaveToTextFile_Click(object sender, EventArgs e)
         {
-            SaveFileDialog saveFileDialog1 = new SaveFileDialog();
-            saveFileDialog1.Filter = "Text File|*.txt";
-            saveFileDialog1.Title = "Save your encrypted or decrypted Message";
+            saveFileDialog1 = new SaveFileDialog
+            {
+                Filter = "Text File|*.txt",
+                Title = "Save your encrypted or decrypted Message"
+            };
             saveFileDialog1.ShowDialog();
             if (!File.Exists(saveFileDialog1.FileName))
             {
@@ -184,17 +234,6 @@ namespace Enigma
             YouWillJoinUs YWJU = new YouWillJoinUs();
             YWJU.Show();
 
-        }
-        //File Input
-        private void FileInput_Click(object sender, EventArgs e)
-        {
-            OpenFileDialog ofd = new OpenFileDialog();
-            if (ofd.ShowDialog() == DialogResult.OK)
-            {
-                string fname = ofd.FileName;
-                Input.Text = System.IO.File.ReadAllText(fname);
-
-            }
         }
     }
 }

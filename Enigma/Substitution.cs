@@ -6,11 +6,11 @@ namespace Enigma
     {
         protected int iKey;
         protected string alphabet = "abcdefghijklmnopqrstuvwxyz";
-
+        //Substitution
         public Substitution()
         {
         }
-
+        //Encrypt
         public string Encrypt(string inputText)
         {
             int counter = 0;
@@ -39,7 +39,7 @@ namespace Enigma
             }
             return outputText;
         }
-
+        //Decrypt
         public string Decrypt(string inputText)
         {
             int counter = 0;
@@ -53,7 +53,6 @@ namespace Enigma
                     {
                         i += alphabet.Length;
                     }
-
                     if (char.IsUpper(c))
                     {
                         outputText = outputText + char.ToUpper(alphabet[i]).ToString();

@@ -12,33 +12,26 @@ namespace Enigma
         Rot substitution;
         int key1;
         int key2;
-
-        public PaulCryption()
-        {
-            //key 1 == substitution key, key 2 == transposition key = Math.Floor((double)key1*inputText.Length);
-        }
-
+        //Encrypt
         public string Encrypt(string inputText, int key)
         {
             key1 = key;
             key2 = (int)Math.Floor((double)(key1 * inputText.Length / 10));
             substitution = new Rot(key);
             transposition = new Transposition(key);
-
             string transText;
             string outputText;
             transText = substitution.Encrypt(inputText);
             outputText = transposition.Encrypt(transText);
             return outputText;
         }
-
+        //Decrypt
         public string Decrypt(string inputText, int key)
         {
             key1 = key;
             key2 = (int)Math.Floor((double)(key1 * inputText.Length / 10));
             substitution = new Rot(key);
             transposition = new Transposition(key);
-
             string transText;
             string outputText;
             transText = substitution.Decrypt(inputText);
