@@ -292,6 +292,15 @@ namespace PowerCrypt
             YWJU.Show();
 
         }
+        //Open Help
+        private void btnHelp_Click(object sender, EventArgs e)
+        {
+            HelpWindow help = new HelpWindow();
+            help.Show();
+
+        }
         #endregion
+
+
     }
 }

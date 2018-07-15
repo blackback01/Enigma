@@ -14,8 +14,8 @@ namespace PowerCrypt
     {
         public AesCryptoServiceProvider cryptoServiceProvider;
 
-        public string key;
-        public string IV;
+        private string key;
+        private string IV;
 
         //Constructor
         public AES_CBC(string key, string IV)

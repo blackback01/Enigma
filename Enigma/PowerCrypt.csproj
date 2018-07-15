@@ -48,6 +48,12 @@
   <ItemGroup>
     <Compile Include="AES_CBC.cs" />
     <Compile Include="Caesar.cs" />
+    <Compile Include="HelpWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="HelpWindow.Designer.cs">
+      <DependentUpon>HelpWindow.cs</DependentUpon>
+    </Compile>
     <Compile Include="PaulCryption.cs" />
     <Compile Include="PowerCrypt.cs">
       <SubType>Form</SubType>
@@ -68,6 +74,9 @@
     <Compile Include="YouWillJoinUs.Designer.cs">
       <DependentUpon>YouWillJoinUs.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="HelpWindow.resx">
+      <DependentUpon>HelpWindow.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="PowerCrypt.resx">
       <DependentUpon>PowerCrypt.cs</DependentUpon>
     </EmbeddedResource>
