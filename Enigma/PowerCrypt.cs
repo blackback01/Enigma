@@ -21,7 +21,6 @@ namespace PowerCrypt
         private Substitution activeSub;
         private Viginere v = new Viginere();
         private Transposition t;
-        private AES_CBC aes = new AES_CBC();
         private PaulCryption pc = new PaulCryption();
         #endregion
         public PowerCrypt()
@@ -29,15 +28,7 @@ namespace PowerCrypt
             InitializeComponent();
             DropDown.SelectedIndex = 0;
         }
-        //Cancel Button
-        private void Cancel_Click(object sender, EventArgs e)
-        {
-            Input.Text = "";
-            Output.Text = "";
-            InputPic.Visible = false;
-            OutputPic.Visible = false;
-            DropDown.SelectedIndex = 0;
-        }
+        
         //Encrypt Checkbox
         private void Encrypt_CheckedChanged(object sender, EventArgs e)
         {
@@ -60,26 +51,32 @@ namespace PowerCrypt
         //Dropdown Menu
         private void DropDown_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (DropDown.SelectedIndex == 2 || DropDown.SelectedIndex == 4 || DropDown.SelectedIndex == 5 || DropDown.SelectedIndex == 7)
-            {
-                CustomParameter.ReadOnly = false;
-            }
-            else if (DropDown.SelectedIndex != 2 || DropDown.SelectedIndex != 4 || DropDown.SelectedIndex != 5 || DropDown.SelectedIndex != 7)
+            if (DropDown.SelectedIndex == 2 || DropDown.SelectedIndex == 4 || DropDown.SelectedIndex == 5 || DropDown.SelectedIndex == 6 || DropDown.SelectedIndex == 7)
+               CustomParameter.ReadOnly = false;
+            else if (DropDown.SelectedIndex != 2 || DropDown.SelectedIndex != 4 || DropDown.SelectedIndex != 5 || DropDown.SelectedIndex != 6 || DropDown.SelectedIndex != 7)
             {
                 CustomParameter.ReadOnly = true;
                 CustomParameter.Text = "";
             }
-        } 
-        //File Input
-        private void FileInput_Click(object sender, EventArgs e)
-        {
-            ofd.Filter = ("TextFiles (*.txt,*.pdf,*.rtf,*.bat)|*.txt;*.pdf;*.rtf,*.bat");
-            if (this.ofd.ShowDialog() == DialogResult.OK)
+
+            if (DropDown.SelectedIndex == 6)
+                CustomParameterTwo.ReadOnly = false;
+            else if (DropDown.SelectedIndex != 6)
             {
-                string fname = ofd.FileName;
-                Input.Text = System.IO.File.ReadAllText(fname);
+                CustomParameterTwo.ReadOnly = true;
+                CustomParameterTwo.Text = "";
             }
+        } 
+       
+        
+
+        private void PowerCrypt_Load(object sender, EventArgs e)
+        {
+
         }
+
+
+        #region Button Click events
         //Start Encrypt & DecryptS
         private void Start_Click(object sender, EventArgs e)
         {
@@ -140,11 +137,41 @@ namespace PowerCrypt
             #region AES Encrypt & Decrypt
             if (DropDown.SelectedIndex == 6 && Encrypt.Checked == true)
             {
+                //Variables
+                string key = CustomParameter.Text;
+                string IV = CustomParameterTwo.Text;
+
+                //Vailid Key and IV length ?
+                if (key.Length != 32 || IV.Length != 16)
+                    MessageBox.Show("Invaild Key or IV. IV Size: 16, Key Size: 32");
+
+                //Encrpt Text
+                AES_CBC aes = new AES_CBC(key, IV);
+
                 Output.Text = aes.Encrypt(Input.Text);
             }
             if (DropDown.SelectedIndex == 6 && Decrypt.Checked == true)
             {
-                Output.Text = aes.Decrypt(Input.Text);
+                //Variables
+                string key = CustomParameter.Text;
+                string IV = CustomParameterTwo.Text;
+
+                //Vailid Key and IV length?
+                if (key.Length != 32 || IV.Length != 16)
+                    MessageBox.Show("Invaild Key or IV. IV Size: 16, Key Size: 32");
+
+                //Decrypt
+                AES_CBC aes = new AES_CBC(key, IV);
+
+                try
+                {
+                    Output.Text = aes.Decrypt(Input.Text);
+                }
+                catch(Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+                
             }
             #endregion
             #region PaulCryption Encrypt & Decrypt
@@ -157,7 +184,76 @@ namespace PowerCrypt
                 Output.Text = pc.Decrypt(Input.Text, Convert.ToInt32(CustomParameter.Text));
             }
             #endregion
+        }        
+        //Cancel Button
+        private void Cancel_Click(object sender, EventArgs e)
+        {
+            Input.Text = "";
+            Output.Text = "";
+            InputPic.Visible = false;
+            OutputPic.Visible = false;
+            DropDown.SelectedIndex = 0;
+        } 
+
+        //Generate Key 
+        private void btnGenerateKey_Click(object sender, EventArgs e)
+        {
+            //Random string
+            char[] letters = "qwertzuiopasdfghjklyxcvbnm".ToCharArray();
+            Random r = new Random();
+            string randomString = "";
+            
+            //AES Key
+            if (DropDown.SelectedIndex == 6)
+            {
+                for(int i = 0; i <= 31; i++)
+                {
+                    randomString += letters[r.Next(0, 25)].ToString();
+                }
+                CustomParameter.Text = randomString;
+            }
+            else
+            {
+                MessageBox.Show("Select an encryption Algorithm");
+            }
+                
         }
+
+        //Generate IV (AES only)
+        private void btnGenerateIV_Click(object sender, EventArgs e)
+        {
+            //Random string
+            char[] letters = "qwertzuiopasdfghjklyxcvbnm".ToCharArray();
+            Random r = new Random();
+            string randomString = "";
+
+            if(DropDown.SelectedIndex == 6)
+            {
+                for(int i = 0; i <= 15; i++)
+                {
+                    randomString += letters[r.Next(0, 25)].ToString();
+                    CustomParameterTwo.Text = randomString;
+                }
+            }
+            else
+            {
+                MessageBox.Show("This is only for AES-CBC encryption");
+            }
+
+            
+        }
+           
+        //File Input
+        private void FileInput_Click(object sender, EventArgs e)
+        {
+            ofd.Filter = ("TextFiles (*.txt,*.pdf,*.rtf,*.bat)|*.txt;*.pdf;*.rtf,*.bat");
+            if (this.ofd.ShowDialog() == DialogResult.OK)
+            {
+                string fname = ofd.FileName;
+                Input.Text = System.IO.File.ReadAllText(fname);
+            }
+        }
+        
         //Copy to Clipboard
         private void CopyToClipboard_Click(object sender, EventArgs e)
         {
@@ -166,6 +262,7 @@ namespace PowerCrypt
                 Clipboard.SetText(Output.Text);
             }
         }
+        
         //Save to TextFile
         private void SaveToTextFile_Click(object sender, EventArgs e)
         {
@@ -187,6 +284,7 @@ namespace PowerCrypt
                 File.AppendAllText(saveFileDialog1.FileName, Text);
             }
         }
+        
         //Theme Change
         private void Theme_Click(object sender, EventArgs e)
         {
@@ -194,5 +292,6 @@ namespace PowerCrypt
             YWJU.Show();
 
         }
+        #endregion
     }
 }

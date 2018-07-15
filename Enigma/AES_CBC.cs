@@ -12,18 +12,24 @@ namespace PowerCrypt
     //AES-CBC encryption class by jonas
     class AES_CBC
     {
-        private AesCryptoServiceProvider cryptoServiceProvider;
+        public AesCryptoServiceProvider cryptoServiceProvider;
+
+        public string key;
+        public string IV;
 
         //Constructor
-        public AES_CBC()
+        public AES_CBC(string key, string IV)
         {
+            this.key = key;
+            this.IV = IV;
+            
             cryptoServiceProvider = new AesCryptoServiceProvider();
 
             //set Block and keysize, generate IV and Key, set CBC mode and Padding Mode
             cryptoServiceProvider.BlockSize = 128;
             cryptoServiceProvider.KeySize = 256;
-            cryptoServiceProvider.GenerateIV();
-            cryptoServiceProvider.GenerateKey();
+            cryptoServiceProvider.Key = Encoding.ASCII.GetBytes(key);
+            cryptoServiceProvider.IV = Encoding.ASCII.GetBytes(IV);
             cryptoServiceProvider.Mode = CipherMode.CBC;
             cryptoServiceProvider.Padding = PaddingMode.PKCS7;
         }
@@ -58,5 +64,6 @@ namespace PowerCrypt
 
             return str;
         }
+
     }
 }
