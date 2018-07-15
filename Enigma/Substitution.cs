@@ -5,7 +5,7 @@ namespace PowerCrypt
     public class Substitution
     {
         protected int iKey;
-        protected string alphabet = "abcdefghijklmnopqrstuvwxyz";
+        protected string alphabet = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789?!,.:()' ";
         //Substitution
         public Substitution()
         {
@@ -20,7 +20,7 @@ namespace PowerCrypt
                 if (alphabet.Contains(c.ToString()))
                 {
                     int i = alphabet.IndexOf(c) + iKey;
-                    if (i > 26)
+                    if (i > 71)
                     {
                         i -= alphabet.Length;
                     }

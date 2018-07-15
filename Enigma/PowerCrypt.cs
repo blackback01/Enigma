@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
+using Microsoft.VisualBasic;
 
 namespace PowerCrypt
 {
@@ -199,8 +200,9 @@ namespace PowerCrypt
         private void btnGenerateKey_Click(object sender, EventArgs e)
         {
             //Random string
-            char[] letters = "qwertzuiopasdfghjklyxcvbnm".ToCharArray();
+            char[] letters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789?!,.:()' ".ToCharArray();
             Random r = new Random();
+    
             string randomString = "";
             
             //AES Key
@@ -208,22 +210,52 @@ namespace PowerCrypt
             {
                 for(int i = 0; i <= 31; i++)
                 {
-                    randomString += letters[r.Next(0, 25)].ToString();
+                    randomString += letters[r.Next(0, 71)].ToString();
                 }
                 CustomParameter.Text = randomString;
             }
-            else
+
+            //Viginere Key
+            else if(DropDown.SelectedIndex == 4)
             {
-                MessageBox.Show("Select an encryption Algorithm");
+                for (int i = 0; i <= r.Next(6, 15); i++)
+                {
+                    randomString += letters[r.Next(0, 71)].ToString();
+                }
+                CustomParameter.Text = randomString;
+
             }
-                
+
+            //PaulCryption Key
+            else if (DropDown.SelectedIndex == 7)
+            {
+                for (int i = 0; i <= r.Next(0, 35); i++)
+                {
+                    randomString += letters[r.Next(0, 71)].ToString();
+                }
+                CustomParameter.Text = randomString;
+            }
+
+            //NO Encryption Selected?
+            else if (DropDown.SelectedIndex == 0)
+            {
+                MessageBox.Show("Select an encryption");
+            }
+            //Other encryption selected?
+            else if (DropDown.SelectedIndex != 6 || DropDown.SelectedIndex != 4 || DropDown.SelectedIndex != 7)
+            {
+                MessageBox.Show("No Random Key generation for this encryption");
+            }
+
+
+
         }
 
         //Generate IV (AES only)
         private void btnGenerateIV_Click(object sender, EventArgs e)
         {
             //Random string
-            char[] letters = "qwertzuiopasdfghjklyxcvbnm".ToCharArray();
+            char[] letters = "qwertzuiopasdfghjklyxcvbnm1234567890".ToCharArray();
             Random r = new Random();
             string randomString = "";
 
@@ -231,7 +263,7 @@ namespace PowerCrypt
             {
                 for(int i = 0; i <= 15; i++)
                 {
-                    randomString += letters[r.Next(0, 25)].ToString();
+                    randomString += letters[r.Next(0, 35)].ToString();
                     CustomParameterTwo.Text = randomString;
                 }
             }
@@ -274,14 +306,20 @@ namespace PowerCrypt
             saveFileDialog1.ShowDialog();
             if (!File.Exists(saveFileDialog1.FileName))
             {
-                string Text = Output.Text + Environment.NewLine;
-                File.WriteAllText(saveFileDialog1.FileName, Text);
+                try
+                {
+                    string Text = Output.Text + Environment.NewLine;
+                    File.WriteAllText(saveFileDialog1.FileName, Text);
+                }
+                catch (Exception) { }
             }
             else if (File.Exists(saveFileDialog1.FileName))
             {
+
                 File.Delete(saveFileDialog1.FileName);
                 string Text = Output.Text + Environment.NewLine;
                 File.AppendAllText(saveFileDialog1.FileName, Text);
+
             }
         }
         
